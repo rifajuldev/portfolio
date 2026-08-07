@@ -1,11 +1,11 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IAdminContact {
-  _id: string;
-  phone_number: string;
-  email: string;
-  whatsapp: string;
-  address: string;
+  _id: string
+  phone_number: string
+  email: string
+  whatsapp: string
+  address: string
 }
 
 const adminContactSchema = new Schema<IAdminContact>(
@@ -16,10 +16,9 @@ const adminContactSchema = new Schema<IAdminContact>(
     address: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
 const AdminContact: Model<IAdminContact> =
-  models?.AdminContact ||
-  model<IAdminContact>("AdminContact", adminContactSchema);
+  models?.AdminContact || model<IAdminContact>('AdminContact', adminContactSchema)
 
-export default AdminContact;
+export default AdminContact

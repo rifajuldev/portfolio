@@ -1,17 +1,17 @@
-import React from "react";
-import NavMenu from "./NavMenu";
-import NavContainer from "./NavContainer";
-import ThemeToggle from "./ThemeToggle";
-import MobileMenu from "./MobileMenu";
+import React from 'react'
+import MobileMenu from './MobileMenu'
+import NavContainer from './NavContainer'
+import NavMenu from './NavMenu'
+import ThemeToggle from './ThemeToggle'
 
 interface NavbarProps {
-  setIsOffCanvasOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>; // mobile nav toggle prop
+  setIsOffCanvasOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>> // mobile nav toggle prop
 }
 
 const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen }) => {
   return (
-    <nav className="rounded-lg border relative top-[22px] border-border-1 z-50 bg-[#333a32] dark:bg-bg-3">
+    <nav className="border-border-1 dark:bg-bg-3 relative top-[22px] z-50 rounded-lg border bg-[#333a32]">
       <div className="flex">
         {/* nav menu */}
         <div className="hidden md:block">
@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen 
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

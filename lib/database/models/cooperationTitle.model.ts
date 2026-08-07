@@ -1,11 +1,11 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface ICooperationTitle {
-  _id: string;
-  first_title: string;
-  second_title: string;
-  third_title: string;
-  fourth_title: string;
+  _id: string
+  first_title: string
+  second_title: string
+  third_title: string
+  fourth_title: string
 }
 
 const CooperationTitleSchema = new Schema<ICooperationTitle>(
@@ -16,10 +16,9 @@ const CooperationTitleSchema = new Schema<ICooperationTitle>(
     fourth_title: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
 const CooperationTitle: Model<ICooperationTitle> =
-  models?.CooperationTitle ||
-  model<ICooperationTitle>("CooperationTitle", CooperationTitleSchema);
+  models?.CooperationTitle || model<ICooperationTitle>('CooperationTitle', CooperationTitleSchema)
 
-export default CooperationTitle;
+export default CooperationTitle

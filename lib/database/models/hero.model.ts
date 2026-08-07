@@ -1,15 +1,15 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IHero {
-    _id: string;
-    headline: string;
-    first_title: string;
-    middle_title: string;
-    hero_img_url: string;
-    hero_pdf_url: string;
-    last_title: string;
-    desc: string;
-    desc_highlighted_text: string;
+  _id: string
+  headline: string
+  first_title: string
+  middle_title: string
+  hero_img_url: string
+  hero_pdf_url: string
+  last_title: string
+  desc: string
+  desc_highlighted_text: string
 }
 
 const heroSchema = new Schema<IHero>(
@@ -24,8 +24,8 @@ const heroSchema = new Schema<IHero>(
     desc_highlighted_text: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
-const Hero: Model<IHero> = models?.Hero || model<IHero>("Hero", heroSchema);
+const Hero: Model<IHero> = models?.Hero || model<IHero>('Hero', heroSchema)
 
-export default Hero;
+export default Hero

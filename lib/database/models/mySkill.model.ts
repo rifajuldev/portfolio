@@ -1,12 +1,12 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IMySkill {
-  _id: string;
-  front_end_technologies: Array<string>;
-  back_end_technologies: Array<string>;
-  database_technologies: Array<string>;
-  tools_platform_technologies: Array<string>;
-  others_technologies: Array<string>;
+  _id: string
+  front_end_technologies: Array<string>
+  back_end_technologies: Array<string>
+  database_technologies: Array<string>
+  tools_platform_technologies: Array<string>
+  others_technologies: Array<string>
 }
 
 const mySkillSchema = new Schema<IMySkill>(
@@ -20,9 +20,8 @@ const mySkillSchema = new Schema<IMySkill>(
   {
     timestamps: true,
   }
-);
+)
 
-const MySkill: Model<IMySkill> =
-  models?.MySkill || model<IMySkill>("MySkill", mySkillSchema);
+const MySkill: Model<IMySkill> = models?.MySkill || model<IMySkill>('MySkill', mySkillSchema)
 
-export default MySkill;
+export default MySkill

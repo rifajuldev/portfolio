@@ -1,57 +1,51 @@
-import { useState, useTransition } from "react";
-import Modal from "../ui/Modal";
-import { MdDelete } from "react-icons/md";
+import { useState, useTransition } from 'react'
+import { MdDelete } from 'react-icons/md'
+import Modal from '../ui/Modal'
 
 interface DeleteConfirmationProps {
-  onConfirm: () => void;
-  title: string;
+  onConfirm: () => void
+  title: string
 }
 
-const DeleteConfirmation = ({
-  onConfirm,
-  title = "Are you sure want to delete?",
-}: DeleteConfirmationProps) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
+const DeleteConfirmation = ({ onConfirm, title = 'Are you sure want to delete?' }: DeleteConfirmationProps) => {
+  const [isModalOpen, setModalOpen] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
+  const handleOpenModal = () => setModalOpen(true)
+  const handleCloseModal = () => setModalOpen(false)
 
   const handleConfirm = async () => {
     startTransition(() => {
-      onConfirm();
-      handleCloseModal();
-    });
-  };
+      onConfirm()
+      handleCloseModal()
+    })
+  }
 
   return (
     <>
-      <button
-        className="text-neutral-0 hover:text-red-700"
-        onClick={handleOpenModal}
-      >
+      <button className="text-neutral-0 hover:text-red-700" onClick={handleOpenModal}>
         <MdDelete size={24} />
       </button>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <h4>{title}</h4>
 
-        <div className="flex gap-6 text-base justify-end mt-6">
+        <div className="mt-6 flex justify-end gap-6 text-base">
           <button onClick={handleCloseModal} className="text-neutral-0">
             Cancel
           </button>
 
           <button
             onClick={handleConfirm}
-            className="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none"
+            className="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 disabled:pointer-events-none disabled:opacity-50"
             disabled={isPending}
           >
-            {isPending ? "Deleting" : "Delete"}
+            {isPending ? 'Deleting' : 'Delete'}
           </button>
         </div>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default DeleteConfirmation;
+export default DeleteConfirmation

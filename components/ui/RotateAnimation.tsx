@@ -1,24 +1,22 @@
-import React from "react";
+import React from 'react'
 
 interface RotateAnimationProps {
-  position?: "top" | "bottom";
+  position?: 'top' | 'bottom'
 }
 
 const RotateAnimation: React.FC<RotateAnimationProps> = ({ position }) => {
   return (
     <div
-      className={`absolute hidden md:block z-10 ${
-        position === "top" ? "-top-[35px]" : "-bottom-[35px]"
-      } -right-[35px]`}
+      className={`absolute z-10 hidden md:block ${position === 'top' ? '-top-[35px]' : '-bottom-[35px]'} -right-[35px]`}
     >
       <div className="rotateme animate-rotateme">
         {/* Big Circle */}
-        <div className="w-[210px] h-[210px] border-[0.4px] border-border-1 rounded-full"></div>
+        <div className="border-border-1 h-[210px] w-[210px] rounded-full border-[0.4px]"></div>
 
         {/* Middle Circle */}
-        <div className="w-[124px] h-[124px] border-[0.4px] border-border-1 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="border-border-1 absolute top-1/2 left-1/2 h-[124px] w-[124px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[0.4px]">
           <svg
-            className="mb-8 absolute bottom-0 left-0"
+            className="absolute bottom-0 left-0 mb-8"
             xmlns="http://www.w3.org/2000/svg"
             width="9"
             height="9"
@@ -30,9 +28,9 @@ const RotateAnimation: React.FC<RotateAnimationProps> = ({ position }) => {
         </div>
 
         {/* Small Circle */}
-        <div className="w-[82px] h-[82px] border-[0.4px] border-border-1 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="border-border-1 absolute top-1/2 left-1/2 h-[82px] w-[82px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[0.4px]">
           <svg
-            className="mb-4 absolute bottom-0 left-0"
+            className="absolute bottom-0 left-0 mb-4"
             xmlns="http://www.w3.org/2000/svg"
             width="9"
             height="9"
@@ -44,7 +42,7 @@ const RotateAnimation: React.FC<RotateAnimationProps> = ({ position }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RotateAnimation;
+export default RotateAnimation

@@ -1,21 +1,22 @@
-import ProjectForm from "@/components/forms/ProjectForm";
-import DashboardPageLayout from "@/components/shared/DashboardPageLayout";
-import { getProjectById } from "@/lib/actions/project.action";
+import ProjectForm from '@/components/forms/ProjectForm'
+import DashboardPageLayout from '@/components/shared/DashboardPageLayout'
+import { getProjectById } from '@/lib/actions/project.action'
 
 type UpdateProjectProps = {
-  params: {
-    id: string;
-  };
-};
+  params: Promise<{
+    id: string
+  }>
+}
 
-const UpdateProject = async ({ params: { id } }: UpdateProjectProps) => {
-  const project = await getProjectById(id);
-  
+const UpdateProject = async ({ params }: UpdateProjectProps) => {
+  const { id } = await params
+  const project = await getProjectById(id)
+
   return (
     <DashboardPageLayout title="Update Project">
       <ProjectForm type="Update" project={project} projectId={project._id} />
     </DashboardPageLayout>
-  );
-};
+  )
+}
 
-export default UpdateProject;
+export default UpdateProject

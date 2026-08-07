@@ -1,8 +1,8 @@
-import { Model, model, models, Schema } from "mongoose";
+import { Model, model, models, Schema } from 'mongoose'
 
 export interface IFormTechnology {
-  _id: string;
-  name: string;
+  _id: string
+  name: string
 }
 
 const formTechnologySchema = new Schema<IFormTechnology>(
@@ -12,10 +12,9 @@ const formTechnologySchema = new Schema<IFormTechnology>(
   {
     timestamps: true,
   }
-);
+)
 
 const FormTechnology: Model<IFormTechnology> =
-  models?.FormTechnology ||
-  model<IFormTechnology>("FormTechnology", formTechnologySchema);
+  models?.FormTechnology || model<IFormTechnology>('FormTechnology', formTechnologySchema)
 
-export default FormTechnology;
+export default FormTechnology

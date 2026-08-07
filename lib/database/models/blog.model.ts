@@ -1,14 +1,14 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IBlog {
-  _id: string;
-  tag: string;
-  img_url: string;
-  date: Date;
-  read_time: string;
-  title: string;
-  desc: string;
-  link: string;
+  _id: string
+  tag: string
+  img_url: string
+  date: Date
+  read_time: string
+  title: string
+  desc: string
+  link: string
 }
 
 const blogSchema = new Schema<IBlog>(
@@ -22,8 +22,8 @@ const blogSchema = new Schema<IBlog>(
     link: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
-const Blog: Model<IBlog> = models?.Blog || model<IBlog>("Blog", blogSchema);
+const Blog: Model<IBlog> = models?.Blog || model<IBlog>('Blog', blogSchema)
 
-export default Blog;
+export default Blog

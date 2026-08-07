@@ -1,54 +1,44 @@
-"use client";
-import { useAppContext } from "@/lib/context/appContext";
-import SectionHeading from "./SectionHeading";
-import Skeleton from "react-loading-skeleton";
+'use client'
+import { useAppContext } from '@/lib/context/appContext'
+import Skeleton from 'react-loading-skeleton'
+import SectionHeading from './SectionHeading'
 
 const CooperationGitJournaling = () => {
-  const { gits } = useAppContext();
+  const { gits } = useAppContext()
 
   return (
-    <div className="bg-bg-3 rounded-lg border border-border-1 md:p-10 p-4 relative h-full overflow-hidden">
+    <div className="bg-bg-3 border-border-1 relative h-full overflow-hidden rounded-lg border p-4 md:p-10">
       {/* Section Heading Start */}
       <SectionHeading sectionName="Git Journaling" />
       {/* Section Heading End */}
 
       {/* Git Lists Start */}
-      <div className="h-full relative mt-6 mb-0">
+      <div className="relative mt-6 mb-0 h-full">
         {gits.length > 0 ? (
           <>
             <ul className="pl-4">
               {gits.map(({ _id, date, title }) => {
-                const gitDate = new Date(date);
-                const formattedDate = gitDate.toLocaleDateString("en-US", {
-                  day: "2-digit",
-                  month: "long",
-                });
+                const gitDate = new Date(date)
+                const formattedDate = gitDate.toLocaleDateString('en-US', {
+                  day: '2-digit',
+                  month: 'long',
+                })
 
                 return (
-                  <li
-                    key={_id}
-                    className="relative mb-4 last:mb-0 before-item-dot education-before-item-dot z-10"
-                  >
-                    <div className="flex xl:flex-nowrap flex-wrap gap-2">
-                      <p className="text-neutral-300 whitespace-nowrap mb-0 text-[16px]">
-                        {formattedDate}:
-                      </p>
+                  <li key={_id} className="before-item-dot education-before-item-dot relative z-10 mb-4 last:mb-0">
+                    <div className="flex flex-wrap gap-2 xl:flex-nowrap">
+                      <p className="mb-0 text-[16px] whitespace-nowrap text-neutral-300">{formattedDate}:</p>
                       <p className="text-neutral-0 mb-4">{title}</p>
                     </div>
                   </li>
-                );
+                )
               })}
             </ul>
-            <div className="top-[12px] lg:top-[15px] h-[90%] left-[4.5px] lg:left-[5px] absolute border-l border-border-1 z-0"></div>
+            <div className="border-border-1 absolute top-[12px] left-[4.5px] z-0 h-[90%] border-l lg:top-[15px] lg:left-[5px]"></div>
           </>
         ) : (
           <div>
-            <Skeleton
-              count={5}
-              height={62}
-              containerClassName="flex-1"
-              style={{ marginBottom: "15px" }}
-            />
+            <Skeleton count={5} height={62} containerClassName="flex-1" style={{ marginBottom: '15px' }} />
           </div>
         )}
       </div>
@@ -56,7 +46,7 @@ const CooperationGitJournaling = () => {
 
       <div className="bg-overlay absolute bottom-0 left-0 z-10"></div>
     </div>
-  );
-};
+  )
+}
 
-export default CooperationGitJournaling;
+export default CooperationGitJournaling

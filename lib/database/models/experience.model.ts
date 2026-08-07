@@ -1,15 +1,15 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IExperience {
-  _id: string;
-  job_desc_list: Array<{ text: string; highlight?: string }>;
-  experi_technologies: Array<string>;
-  company_name: string;
-  company_logo_url: string;
-  role: string;
-  job_start_date: Date;
-  job_end_date?: Date;
-  isPresent: boolean;
+  _id: string
+  job_desc_list: Array<{ text: string; highlight?: string }>
+  experi_technologies: Array<string>
+  company_name: string
+  company_logo_url: string
+  role: string
+  job_start_date: Date
+  job_end_date?: Date
+  isPresent: boolean
 }
 
 const experienceSchema = new Schema<IExperience>(
@@ -24,9 +24,8 @@ const experienceSchema = new Schema<IExperience>(
     isPresent: { type: Boolean, default: false },
   },
   { timestamps: true }
-);
+)
 
-const Experience: Model<IExperience> =
-  models?.Experience || model<IExperience>("Experience", experienceSchema);
+const Experience: Model<IExperience> = models?.Experience || model<IExperience>('Experience', experienceSchema)
 
-export default Experience;
+export default Experience

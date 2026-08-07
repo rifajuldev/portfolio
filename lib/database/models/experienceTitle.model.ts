@@ -1,11 +1,11 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IExperienceTitle {
-  _id: string;
-  first_title: string;
-  second_title: string;
-  third_title: string;
-  fourth_title: string;
+  _id: string
+  first_title: string
+  second_title: string
+  third_title: string
+  fourth_title: string
 }
 
 const experienceTitleSchema = new Schema<IExperienceTitle>(
@@ -16,10 +16,9 @@ const experienceTitleSchema = new Schema<IExperienceTitle>(
     fourth_title: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
 const ExperienceTitle: Model<IExperienceTitle> =
-  models?.ExperienceTitle ||
-  model<IExperienceTitle>("ExperienceTitle", experienceTitleSchema);
+  models?.ExperienceTitle || model<IExperienceTitle>('ExperienceTitle', experienceTitleSchema)
 
-export default ExperienceTitle;
+export default ExperienceTitle

@@ -1,91 +1,69 @@
-"use client";
-import SectionHeading from "../ui/SectionHeading";
-import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
-import Link from "next/link";
-import { useAppContext } from "@/lib/context/appContext";
-import * as RiIcons from "react-icons/ri";
-import Skeleton from "react-loading-skeleton";
+'use client'
+import { useAppContext } from '@/lib/context/appContext'
+import Link from 'next/link'
+import * as RiIcons from 'react-icons/ri'
+import Skeleton from 'react-loading-skeleton'
+import SectionAnimatedBorder from '../ui/SectionAnimatedBorder'
+import SectionHeading from '../ui/SectionHeading'
 
 const Services = () => {
-  const { services } = useAppContext();
+  const { services } = useAppContext()
 
   return (
     <section id="services" className="mb-8">
-      <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
+      <SectionAnimatedBorder className="p-4 md:p-6 lg:p-8">
         {/* Section Heading Start */}
         <SectionHeading
           sectionName="Cooperation"
-          headings={[
-            { title: "Designing solutions", span: "customized" },
-            { span: "to meet your requirements" },
-          ]}
+          headings={[{ title: 'Designing solutions', span: 'customized' }, { span: 'to meet your requirements' }]}
           center={true}
         />
         {/* Section Heading End */}
 
         {/* Services Content Start */}
-        <div className="mt-7 relative z-20">
+        <div className="relative z-20 mt-7">
           {/* Service Card Start */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.length > 0 ? (
               services.map(({ _id, title, icon_name, desc, highlightText }) => {
-                const IconComponent =
-                  RiIcons[icon_name as keyof typeof RiIcons];
+                const IconComponent = RiIcons[icon_name as keyof typeof RiIcons]
 
                 return (
                   <div
                     key={_id}
-                    className="lg:px-[42px] px-[35px] lg:pt-[93px] pt-[70px] lg:pb-[42px] pb-[35px] bg-bg-3 border border-border-1 rounded-md h-full transition-all duration-300 ease-in-out hover:translate-y-[-8px] group"
+                    className="bg-bg-3 border-border-1 group h-full rounded-md border px-[35px] pt-[70px] pb-[35px] transition-all duration-300 ease-in-out hover:translate-y-[-8px] lg:px-[42px] lg:pt-[93px] lg:pb-[42px]"
                   >
                     {IconComponent ? (
-                      <IconComponent className="w-6 h-6 text-neutral-0 group-hover:text-primary-2 transition-all duration-300" />
+                      <IconComponent className="text-neutral-0 group-hover:text-primary-2 h-6 w-6 transition-all duration-300" />
                     ) : null}
 
-                    <h6 className="my-4 font-medium text-[20px] leading-tight">
-                      {title}
-                    </h6>
+                    <h6 className="my-4 text-[20px] leading-tight font-medium">{title}</h6>
 
                     {/* Description with Highlighted Text */}
                     <p
-                      className="text-base text-neutral-300 mb-4 font-normal leading-normal"
+                      className="mb-4 text-base leading-normal font-normal text-neutral-300"
                       dangerouslySetInnerHTML={{
                         __html: highlightText
-                          ? (desc || "").replace(
-                              new RegExp(
-                                `(${highlightText.split(" ").join("|")})`,
-                                "gi"
-                              ),
+                          ? (desc || '').replace(
+                              new RegExp(`(${highlightText.split(' ').join('|')})`, 'gi'),
                               '<span class="text-secondary-2">$1</span>'
                             )
-                          : desc || "",
+                          : desc || '',
                       }}
                     ></p>
                   </div>
-                );
+                )
               })
             ) : (
               <>
                 {Array.from({ length: 6 }).map((_, index) => (
                   <div
                     key={index}
-                    className="flex flex-col lg:px-[42px] px-[35px] lg:pt-[93px] pt-[70px] lg:pb-[42px] pb-[35px] bg-bg-3 border border-border-1 rounded-md h-full transition-all duration-300 ease-in-out hover:translate-y-[-8px] group"
+                    className="bg-bg-3 border-border-1 group flex h-full flex-col rounded-md border px-[35px] pt-[70px] pb-[35px] transition-all duration-300 ease-in-out hover:translate-y-[-8px] lg:px-[42px] lg:pt-[93px] lg:pb-[42px]"
                   >
-                    <Skeleton
-                      height={30}
-                      containerClassName="flex-1"
-                      style={{ marginBottom: "15px" }}
-                    />
-                    <Skeleton
-                      height={40}
-                      containerClassName="flex-1"
-                      style={{ marginBottom: "15px" }}
-                    />
-                    <Skeleton
-                      count={3}
-                      height={20}
-                      containerClassName="flex-1"
-                      style={{ marginBottom: "5px" }}
-                    />
+                    <Skeleton height={30} containerClassName="flex-1" style={{ marginBottom: '15px' }} />
+                    <Skeleton height={40} containerClassName="flex-1" style={{ marginBottom: '15px' }} />
+                    <Skeleton count={3} height={20} containerClassName="flex-1" style={{ marginBottom: '5px' }} />
                   </div>
                 ))}
               </>
@@ -94,13 +72,11 @@ const Services = () => {
           {/* Service Card End */}
 
           {/* More Services Text */}
-          <div className="text-center pt-[60px]">
-            <p className="text-neutral-300 text-[16px]">
-              Excited to take on{" "}
-              <span className="text-neutral-0">new projects</span> and
-              collaborate.
+          <div className="pt-[60px] text-center">
+            <p className="text-[16px] text-neutral-300">
+              Excited to take on <span className="text-neutral-0">new projects</span> and collaborate.
               <br />
-              Let&apos;s chat about your ideas.{" "}
+              Let&apos;s chat about your ideas.{' '}
               <Link href="/#contact" className="text-primary-2">
                 Reach out!
               </Link>
@@ -111,12 +87,12 @@ const Services = () => {
 
         {/* Background Image */}
         <div
-          className="absolute top-0 left-0 w-full h-full dark:invert"
+          className="absolute top-0 left-0 h-full w-full dark:invert"
           style={{ backgroundImage: 'url("/services/bg.png")' }}
         ></div>
       </SectionAnimatedBorder>
     </section>
-  );
-};
+  )
+}
 
-export default Services;
+export default Services

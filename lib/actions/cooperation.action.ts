@@ -1,46 +1,42 @@
-"use server";
-import { CreateCooperationParams, DeleteCooperationParams } from "@/types";
-import { handleError } from "../utils";
-import { connectToDatabase } from "../database/dbConnect";
-import Cooperation from "../database/models/cooperation.model";
+'use server'
+import { CreateCooperationParams, DeleteCooperationParams } from '@/types'
+import { connectToDatabase } from '../database/dbConnect'
+import Cooperation from '../database/models/cooperation.model'
+import { handleError } from '../utils'
 
 // Create a new trusted company
-export const createCooperation = async ({
-  cooperation
-}: CreateCooperationParams) => {
+export const createCooperation = async ({ cooperation }: CreateCooperationParams) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const newCooperation = await Cooperation.create(cooperation);
+    const newCooperation = await Cooperation.create(cooperation)
 
-    return JSON.parse(JSON.stringify(newCooperation));
+    return JSON.parse(JSON.stringify(newCooperation))
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}
 
 // Get all cooperations
 export const getAllCooperations = async () => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const cooperations = await Cooperation.find({}).sort({ createdAt: -1 });
+    const cooperations = await Cooperation.find({}).sort({ createdAt: -1 })
 
-    return JSON.parse(JSON.stringify(cooperations));
+    return JSON.parse(JSON.stringify(cooperations))
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}
 
 // Delete a cooperation by Id
-export const deleteCooperation = async ({
-  cooperationId,
-}: DeleteCooperationParams) => {
+export const deleteCooperation = async ({ cooperationId }: DeleteCooperationParams) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    await Cooperation.findByIdAndDelete(cooperationId);
+    await Cooperation.findByIdAndDelete(cooperationId)
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}

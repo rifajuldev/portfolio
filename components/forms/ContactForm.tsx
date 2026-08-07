@@ -1,11 +1,11 @@
-"use client";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { RiArrowRightUpLine } from "react-icons/ri";
-import { contactFormSchema } from "@/lib/validator";
-import toast from "react-hot-toast";
-import { sendMail } from "@/lib/send-mail";
+'use client'
+import { sendMail } from '@/lib/send-mail'
+import { contactFormSchema } from '@/lib/validator'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+import { RiArrowRightUpLine } from 'react-icons/ri'
+import { z } from 'zod'
 
 const ContactForm = () => {
   const {
@@ -15,19 +15,19 @@ const ContactForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
-  });
+  })
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
     try {
       await sendMail({
         ...values,
-        phone: values.phone || "",
-      });
-      reset();
-      toast.success("Message sent successfully!");
+        phone: values.phone || '',
+      })
+      reset()
+      toast.success('Message sent successfully!')
     } catch (error) {
-      console.error("Error sending email:", error);
-      toast.error("Failed to send message. Please try again later.");
+      console.error('Error sending email:', error)
+      toast.error('Failed to send message. Please try again later.')
     }
   }
 
@@ -36,62 +36,32 @@ const ContactForm = () => {
       <div className="grid grid-cols-2 gap-4">
         {/* Name */}
         <div>
-          <input
-            {...register("name")}
-            className="form-control"
-            placeholder="Your name"
-          />
-          {errors.name && (
-            <p className="form-validation-error">{errors.name.message}</p>
-          )}
+          <input {...register('name')} className="form-control" placeholder="Your name" />
+          {errors.name && <p className="form-validation-error">{errors.name.message}</p>}
         </div>
 
         {/* Phone */}
         <div>
-          <input
-            {...register("phone")}
-            className="form-control"
-            placeholder="Phone (optional)"
-          />
-          {errors.phone && (
-            <p className="form-validation-error">{errors.phone.message}</p>
-          )}
+          <input {...register('phone')} className="form-control" placeholder="Phone (optional)" />
+          {errors.phone && <p className="form-validation-error">{errors.phone.message}</p>}
         </div>
 
         {/* Email */}
         <div>
-          <input
-            {...register("email")}
-            className="form-control"
-            placeholder="Email"
-          />
-          {errors.email && (
-            <p className="form-validation-error">{errors.email.message}</p>
-          )}
+          <input {...register('email')} className="form-control" placeholder="Email" />
+          {errors.email && <p className="form-validation-error">{errors.email.message}</p>}
         </div>
 
         {/* Subject */}
         <div>
-          <input
-            {...register("subject")}
-            className="form-control"
-            placeholder="Subject"
-          />
-          {errors.subject && (
-            <p className="form-validation-error">{errors.subject.message}</p>
-          )}
+          <input {...register('subject')} className="form-control" placeholder="Subject" />
+          {errors.subject && <p className="form-validation-error">{errors.subject.message}</p>}
         </div>
 
         {/* Text area */}
         <div className="col-span-2">
-          <textarea
-            {...register("message")}
-            className="form-control !min-h-[205px]"
-            placeholder="Message"
-          />
-          {errors.message && (
-            <p className="form-validation-error">{errors.message.message}</p>
-          )}
+          <textarea {...register('message')} className="form-control !min-h-[205px]" placeholder="Message" />
+          {errors.message && <p className="form-validation-error">{errors.message.message}</p>}
         </div>
       </div>
 
@@ -99,22 +69,22 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg overflow-hidden disabled:opacity-50 disabled:pointer-events-none"
+        className="group text-neutral-1000 bg-primary-2 font-secondary mt-4 flex items-center gap-2 overflow-hidden rounded-lg px-3 py-3 text-center text-[14px] leading-[14px] font-bold transition-all duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 md:px-6 md:py-4"
       >
-        {isSubmitting ? "Sending Message" : "Send Message"}
+        {isSubmitting ? 'Sending Message' : 'Send Message'}
         <span className="relative inline-block">
           <RiArrowRightUpLine
             size={24}
-            className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-exit absolute w-[20px] md:w-[24px]"
+            className="group-hover:animate-hover-icon-exit absolute w-[20px] transition-transform duration-400 ease-in-out md:w-[24px]"
           />
           <RiArrowRightUpLine
             size={24}
-            className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-enter w-[20px] md:w-[24px]"
+            className="group-hover:animate-hover-icon-enter w-[20px] transition-transform duration-400 ease-in-out md:w-[24px]"
           />
         </span>
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm

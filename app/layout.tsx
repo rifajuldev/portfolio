@@ -1,24 +1,24 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { AppProvider } from "@/lib/context/appContext";
-import { SkeletonTheme } from "react-loading-skeleton";
-import { Toaster } from "react-hot-toast";
-import { dmMono, urbanist } from "./font";
-import CustomSessionProvider from "@/lib/auth/CustomSessionProvider";
+import CustomSessionProvider from '@/lib/auth/CustomSessionProvider'
+import { AppProvider } from '@/lib/context/appContext'
+import type { Metadata } from 'next'
+import { Toaster } from 'react-hot-toast'
+import { SkeletonTheme } from 'react-loading-skeleton'
+import { dmMono, urbanist } from './font'
+import './globals.css'
 
 /* portfolio's title */
 export const metadata: Metadata = {
-  title: "Md Rifajul Islam - Frontend Web Developer",
-  description: "Modern and minimalistic portfolio",
+  title: 'Md Rifajul Islam - Frontend Web Developer',
+  description: 'Modern and minimalistic portfolio',
   icons: {
-    icon: "/favicon.svg",
+    icon: '/favicon.svg',
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -39,10 +39,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="Y9GZmEm29UPq3SRIQKerJuZ8nDXtH8WMF35VSCtAu_Q" />
       </head>
       <body className={`${dmMono.variable} ${urbanist.variable}`}>
-        <SkeletonTheme
-          baseColor="var(--bg-1)"
-          highlightColor="var(--neutral-600)"
-        >
+        <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
           <CustomSessionProvider>
             <AppProvider>{children}</AppProvider>
           </CustomSessionProvider>
@@ -50,5 +47,5 @@ export default function RootLayout({
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
-  );
+  )
 }

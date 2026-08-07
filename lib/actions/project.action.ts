@@ -1,79 +1,75 @@
 'use server'
-import { connectToDatabase } from "@/lib/database/dbConnect";
-import { CreateProjectParams, DeleteProjectParams, ProjectParams } from "@/types";
-import { handleError } from "../utils";
-import Project from "@/lib/database/models/project.model";
+import { connectToDatabase } from '@/lib/database/dbConnect'
+import Project from '@/lib/database/models/project.model'
+import { CreateProjectParams, DeleteProjectParams, ProjectParams } from '@/types'
+import { handleError } from '../utils'
 
 // Create a new project
 export const createProject = async ({ project }: CreateProjectParams) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
     const newProject = await Project.create(project)
 
-    return JSON.parse(JSON.stringify(newProject));
+    return JSON.parse(JSON.stringify(newProject))
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}
 
 // Get one project by ID
 export const getProjectById = async (projectId: string) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const project = await Project.findById(projectId);
+    const project = await Project.findById(projectId)
 
-    if (!project) throw new Error("Project not found");
+    if (!project) throw new Error('Project not found')
 
-    return JSON.parse(JSON.stringify(project));
+    return JSON.parse(JSON.stringify(project))
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}
 
 // Update a project by ID
 export const updateProject = async ({ project }: ProjectParams) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const projectToUpdate = await Project.findById(project._id);
+    const projectToUpdate = await Project.findById(project._id)
     if (!projectToUpdate) {
-      throw new Error("Unauthorized or project not found");
+      throw new Error('Unauthorized or project not found')
     }
 
-    const updatedProject = await Project.findByIdAndUpdate(
-      project._id,
-      { ...project },
-      { new: true }
-    );
+    const updatedProject = await Project.findByIdAndUpdate(project._id, { ...project }, { new: true })
 
-    return JSON.parse(JSON.stringify(updatedProject));
+    return JSON.parse(JSON.stringify(updatedProject))
   } catch (error) {
-    handleError(error);
+    handleError(error)
   }
-};
+}
 
 // Get all projects
 export const getAllProjects = async () => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const projects = await Project.find({}).sort({ createdAt : -1 });
+    const projects = await Project.find({}).sort({ createdAt: -1 })
 
     return JSON.parse(JSON.stringify(projects))
   } catch (error) {
     handleError(error)
   }
-};
+}
 
 // Delete a project by ID
-export const deleteProject = async ({projectId}: DeleteProjectParams) => {
+export const deleteProject = async ({ projectId }: DeleteProjectParams) => {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    await Project.findByIdAndDelete(projectId);
+    await Project.findByIdAndDelete(projectId)
   } catch (error) {
     handleError(error)
   }
-};
+}

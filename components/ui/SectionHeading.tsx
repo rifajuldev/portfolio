@@ -1,17 +1,13 @@
 interface CooperationHeadingProps {
-  sectionName?: string;
-  headings?: Array<{ title?: string; span?: string }>;
-  center?: boolean;
+  sectionName?: string
+  headings?: Array<{ title?: string; span?: string }>
+  center?: boolean
 }
 
-const CooperationHeading: React.FC<CooperationHeadingProps> = ({
-  sectionName,
-  headings = [],
-  center
-}) => {
+const CooperationHeading: React.FC<CooperationHeadingProps> = ({ sectionName, headings = [], center }) => {
   return (
     <>
-      <div className={`flex items-center ${center ? "justify-center" : ""}`}>
+      <div className={`flex items-center ${center ? 'justify-center' : ''}`}>
         <svg
           className="text-primary-2 mr-2"
           xmlns="http://www.w3.org/2000/svg"
@@ -28,14 +24,13 @@ const CooperationHeading: React.FC<CooperationHeadingProps> = ({
       {headings.map((heading, index) => (
         <h3
           key={index}
-          className={`font-medium text-[23px] md:text-[35px] leading-tight mb-0 ${center ? "text-center" : ""}`}
+          className={`mb-0 text-[23px] leading-tight font-medium md:text-[35px] ${center ? 'text-center' : ''}`}
         >
-          {heading.title}{" "}
-          <span className="text-neutral-300">{heading.span}</span>
+          {heading.title} <span className="text-neutral-300">{heading.span}</span>
         </h3>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default CooperationHeading;
+export default CooperationHeading

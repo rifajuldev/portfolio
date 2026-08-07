@@ -1,15 +1,15 @@
-import { Schema, Model, models, model } from "mongoose";
+import { Model, model, models, Schema } from 'mongoose'
 
 export interface IProject {
-  _id: string;
-  title: string;
-  desc: string;
-  client: string;
-  completion_time: string;
-  technologies: Array<string>;
-  project_img_url: string;
-  live_link: string;
-  github_link: string;
+  _id: string
+  title: string
+  desc: string
+  client: string
+  completion_time: string
+  technologies: Array<string>
+  project_img_url: string
+  live_link: string
+  github_link: string
 }
 
 const projectSchema = new Schema<IProject>(
@@ -26,8 +26,8 @@ const projectSchema = new Schema<IProject>(
   {
     timestamps: true,
   }
-);
+)
 
-const Project: Model<IProject> = models?.Project || model<IProject>("Project", projectSchema);
+const Project: Model<IProject> = models?.Project || model<IProject>('Project', projectSchema)
 
-export default Project;
+export default Project

@@ -1,17 +1,17 @@
-import LogoutButton from "@/components/shared/LogoutButton";
-import Link from "next/link";
-import { RiArrowRightLine } from "react-icons/ri";
+import LogoutButton from '@/components/shared/LogoutButton'
+import Link from 'next/link'
+import { RiArrowRightLine } from 'react-icons/ri'
 
 const AdminProfile = async () => {
   return (
     <div>
       <h3 className="text-center">Admin Dashboard</h3>
 
-      <div className="flex justify-end flex-wrap mb-4">
-        <LogoutButton/>
+      <div className="mb-4 flex flex-wrap justify-end">
+        <LogoutButton />
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+      <ul className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
         <li>
           <Link className="admin-link group" href="/adminProfile/hero">
             Hero <RiArrowRightLine className="admin-link-icon" />
@@ -28,12 +28,8 @@ const AdminProfile = async () => {
           </Link>
         </li>
         <li>
-          <Link
-            className="admin-link group"
-            href="/adminProfile/trusted-companies"
-          >
-            Trusted by Companies{" "}
-            <RiArrowRightLine className="admin-link-icon" />
+          <Link className="admin-link group" href="/adminProfile/trusted-companies">
+            Trusted by Companies <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>
         <li>
@@ -55,10 +51,7 @@ const AdminProfile = async () => {
           </Link>
         </li>
         <li>
-          <Link
-            className="admin-link group"
-            href="/adminProfile/git-journaling"
-          >
+          <Link className="admin-link group" href="/adminProfile/git-journaling">
             Git Journaling <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>
@@ -88,7 +81,7 @@ const AdminProfile = async () => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default AdminProfile;
+export default AdminProfile

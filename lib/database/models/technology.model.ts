@@ -1,12 +1,12 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface ITechnology {
-  _id: string;
-  tech_name: string;
-  tech_img_url: string;
-  tech_official_url: string;
-  show_in_hero: boolean;
-  skill_position: string;
+  _id: string
+  tech_name: string
+  tech_img_url: string
+  tech_official_url: string
+  show_in_hero: boolean
+  skill_position: string
 }
 
 const technologySchema = new Schema<ITechnology>(
@@ -18,9 +18,8 @@ const technologySchema = new Schema<ITechnology>(
     skill_position: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
-const Technology: Model<ITechnology> =
-  models?.Technology || model<ITechnology>("Technology", technologySchema);
+const Technology: Model<ITechnology> = models?.Technology || model<ITechnology>('Technology', technologySchema)
 
-export default Technology;
+export default Technology

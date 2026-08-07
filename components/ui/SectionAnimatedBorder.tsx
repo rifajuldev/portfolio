@@ -1,23 +1,16 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react'
 
 interface SectionAnimatedBorderProps {
-  children: ReactNode;
-  className?: string;
+  children: ReactNode
+  className?: string
 }
 
-const SectionAnimatedBorder: React.FC<SectionAnimatedBorderProps> = ({
-  children,
-  className
-}) => {
+const SectionAnimatedBorder: React.FC<SectionAnimatedBorderProps> = ({ children, className }) => {
   return (
-    <div className="border border-border-1 rounded-lg relative h-full overflow-hidden">
-      <div
-        className={`box-linear-animation ${className || ""}`}
-      >
-        {children}
-      </div>
+    <div className="border-border-1 relative h-full overflow-hidden rounded-lg border">
+      <div className={`box-linear-animation ${className || ''}`}>{children}</div>
     </div>
-  );
-};
+  )
+}
 
-export default SectionAnimatedBorder;
+export default SectionAnimatedBorder

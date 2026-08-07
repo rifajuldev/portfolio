@@ -1,11 +1,11 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IService {
-  _id: string;
-  title: string;
-  desc: string;
-  icon_name: string;
-  highlightText: string;
+  _id: string
+  title: string
+  desc: string
+  icon_name: string
+  highlightText: string
 }
 
 const serviceSchema = new Schema<IService>(
@@ -16,8 +16,8 @@ const serviceSchema = new Schema<IService>(
     highlightText: { type: String },
   },
   { timestamps: true }
-);
+)
 
-const Service: Model<IService> = models?.Service || model<IService>("Service", serviceSchema);
+const Service: Model<IService> = models?.Service || model<IService>('Service', serviceSchema)
 
-export default Service;
+export default Service

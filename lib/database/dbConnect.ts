@@ -1,21 +1,21 @@
-import mongoose, { Connection } from "mongoose";
+import mongoose, { Connection } from 'mongoose'
 
-let cachedConnection: Connection | null = null;
+let cachedConnection: Connection | null = null
 
 export async function connectToDatabase() {
   if (cachedConnection) {
-    console.log("Using cached db connection");
-    return cachedConnection;
+    console.log('Using cached db connection')
+    return cachedConnection
   }
   try {
-    const cnx = await mongoose.connect(process.env.MONGODB_URI!);
-    cachedConnection = cnx.connection;
+    const cnx = await mongoose.connect(process.env.MONGODB_URI!)
+    cachedConnection = cnx.connection
 
-    console.log("New mongodb connection established");
+    console.log('New mongodb connection established')
 
-    return cachedConnection;
+    return cachedConnection
   } catch (error) {
-    console.log(error);
-    throw error;
+    console.log(error)
+    throw error
   }
 }

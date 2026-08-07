@@ -1,5 +1,3 @@
-import React from "react";
-
 const Loading = () => {
   return (
     <div id="preloader">
@@ -9,7 +7,7 @@ const Loading = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading

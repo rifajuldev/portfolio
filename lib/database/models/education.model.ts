@@ -1,12 +1,12 @@
-import { model, Model, models, Schema } from "mongoose";
+import { model, Model, models, Schema } from 'mongoose'
 
 export interface IEducation {
-  _id: string;
-  start_date: Date;
-  end_date?: Date;
-  isPresent: boolean;
-  institute: string;
-  desc: string;
+  _id: string
+  start_date: Date
+  end_date?: Date
+  isPresent: boolean
+  institute: string
+  desc: string
 }
 
 const educationSchema = new Schema<IEducation>(
@@ -20,9 +20,8 @@ const educationSchema = new Schema<IEducation>(
   {
     timestamps: true,
   }
-);
+)
 
-const Education: Model<IEducation> =
-  models?.Education || model<IEducation>("Education", educationSchema);
+const Education: Model<IEducation> = models?.Education || model<IEducation>('Education', educationSchema)
 
-export default Education;
+export default Education
