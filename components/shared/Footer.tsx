@@ -1,12 +1,8 @@
-'use client'
-import { navItems } from '@/constants'
-import { useAppContext } from '@/lib/context/appContext'
+import { navItems, socialLinkList } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const Footer = () => {
-  const { combinedSocialLinkData } = useAppContext()
-
   return (
     <footer className="relative">
       <div className="border-border-1 relative z-10 container border-t pt-6 pb-2">
@@ -22,7 +18,7 @@ const Footer = () => {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              Rifaj.dev
+              Rifajul.dev
             </span>
           </Link>
           {/* Footer Logo End */}
@@ -30,7 +26,7 @@ const Footer = () => {
           {/* Social Contacts List Start */}
           <div className="flex justify-center">
             <div className="text-neutral-0 flex items-center gap-4">
-              {combinedSocialLinkData.map(({ id, link, icon: Icon }) => (
+              {socialLinkList.map(({ id, link, icon: Icon }) => (
                 <Link key={id} className="hover:text-primary-2 transition-all duration-300" href={link} target="_blank">
                   <Icon size={18} className="text-xl" />
                 </Link>
@@ -45,7 +41,7 @@ const Footer = () => {
               <li key={route}>
                 <Link
                   href={route}
-                  className="text-neutral-0 rounded py-2 text-base font-normal transition-all !duration-300 hover:text-white"
+                  className="text-neutral-0 hover:text-primary-2 rounded py-2 text-base font-normal transition-all duration-300!"
                 >
                   {label}
                 </Link>

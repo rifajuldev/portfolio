@@ -48,20 +48,6 @@ export const contactFormSchema = object({
   message: string().min(30, 'Please provide your message with minimum 30 characters.'),
 })
 
-export const adminContactFormSchema = object({
-  phone_number: string().nonempty('Phone number is required'),
-  email: string().email('Email is required'),
-  whatsapp: string().nonempty('Whatsapp is required'),
-  address: string().nonempty('Address is required'),
-})
-
-export const socialContactFormSchema = object({
-  facebook_link: string().nonempty('Facebook link is required').url('Invalid URL'),
-  twitter_link: string().nonempty('Twitter link is required').url('Invalid URL'),
-  linkedin_link: string().nonempty('Linkedin link is required').url('Invalid URL'),
-  github_link: string().nonempty('Github link is required').url('Invalid URL'),
-})
-
 export const mySkillFormSchema = object({
   front_end_technologies: array(string()).min(1, 'At least one technology is required'),
   back_end_technologies: array(string()).min(1, 'At least one technology is required'),

@@ -1,6 +1,7 @@
 import CustomSessionProvider from '@/lib/auth/CustomSessionProvider'
 import { AppProvider } from '@/lib/context/appContext'
 import type { Metadata } from 'next'
+import { StrictMode } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import { dmMono, urbanist } from './font'
@@ -39,11 +40,13 @@ export default function RootLayout({
         <meta name="google-site-verification" content="Y9GZmEm29UPq3SRIQKerJuZ8nDXtH8WMF35VSCtAu_Q" />
       </head>
       <body className={`${dmMono.variable} ${urbanist.variable}`}>
-        <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
-          <CustomSessionProvider>
-            <AppProvider>{children}</AppProvider>
-          </CustomSessionProvider>
-        </SkeletonTheme>
+        <StrictMode>
+          <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
+            <CustomSessionProvider>
+              <AppProvider>{children}</AppProvider>
+            </CustomSessionProvider>
+          </SkeletonTheme>
+        </StrictMode>
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>

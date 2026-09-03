@@ -2,6 +2,154 @@
 @import 'uploadthing/tw/v4';
 @source '../node_modules/@uploadthing/react/dist';
 
+:root {
+  /* bg image */
+  --hero-bg-img: url('/hero/hero-bg.png');
+
+  /* theme */
+  --theme-primary-1: #6e4ef2;
+  --theme-primary-2: #62a92b;
+  --theme-primary-3: #be6895;
+  --theme-secondary-1: #21212d;
+  --theme-secondary-3: #b2a4ab;
+
+  /* bg */
+  --bg-1: #edeaf8;
+  --bg-2: #6e4ef2;
+  --bg-3: #ffffff;
+  --bg-4: #fbf8f9;
+  --bg-5: #e8e8e8;
+  --bg-6: #f6f4fd;
+
+  /* neutral */
+  --neutral-0: #1f1f24;
+  --neutral-100: #272730;
+  --neutral-200: #565662;
+  --neutral-300: #5e5e65;
+  --neutral-400: #6d6d72;
+  --neutral-500: #858587;
+  --neutral-600: #969698;
+  --neutral-700: #b2b2ba;
+  --neutral-800: #c5c5ca;
+  --neutral-900: #edeaf8;
+  --neutral-1000: #ffffff;
+
+  /* system */
+  --system-success: #64e1b0;
+  --system-info: #5577a7;
+  --system-warning: #ffd45d;
+  --system-danger: #ec4040;
+  --system-muted: #9ca3af;
+
+  /* border */
+  --border-1: #c0dcbc;
+
+  /* linear gradient */
+  --linear-1: linear-gradient(90deg, #6d4df2 0%, #8c71ff 100%);
+  --linear-2: linear-gradient(-180deg, #6e4ef2 0%, transparent 100%);
+  --linear-3: linear-gradient(-180deg, #dfdfea 0%, rgba(223, 223, 234, 0.31) 31%, rgba(223, 223, 234, 0) 100%);
+  --linear-4: linear-gradient(-90deg, #33a381 0%, #129840 100%);
+  --linear-5: linear-gradient(-90deg, rgba(31, 31, 36, 0.45) 0%, rgb(31, 31, 36) 100%);
+  /* shadow */
+  --shadow-1: 0 13px 35px -12px rgba(35, 35, 35, 0.1);
+  --shadow-2: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+
+  /* degree */
+  --angle: 360deg;
+
+  /* Light mode custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f0f0f5; /* Lighter background for scrollbar track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #c0c0c5; /* Light thumb color */
+    border-radius: 8px; /* Rounded edges for the thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a9a9b0; /* Slightly darker color on hover */
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e0e0e5; /* Track color for the scrollbar */
+  }
+}
+
+.dark {
+  /* Dark theme customizations */
+  --hero-bg-img: url('/hero/hero-bg-dark.png');
+  --theme-primary-1: #6e4ef2;
+  --theme-primary-2: #a8ff53;
+  --theme-primary-3: #fcc6e2;
+  --theme-secondary-1: #21212d;
+  --theme-secondary-2: #f778ba;
+  --theme-secondary-3: #40363b;
+
+  /* Dark mode backgrounds */
+  --bg-1: #24242d;
+  --bg-2: #272730;
+  --bg-3: #272730;
+  --bg-4: #1f1f24;
+  --bg-5: #1f1f24;
+  --bg-6: #2a2a31;
+
+  /* Dark mode neutrals */
+  --neutral-0: #ffffff;
+  --neutral-100: #e9e9ea;
+  --neutral-200: #bcbcbe;
+  --neutral-300: #8f8f92;
+  --neutral-400: #79797c;
+  --neutral-500: #636366;
+  --neutral-600: #3b3b41;
+  --neutral-700: #2a2a31;
+  --neutral-800: #24242d;
+  --neutral-900: #272730;
+  --neutral-1000: #1f1f24;
+
+  /* system colors */
+  --system-success: #10b983;
+  --system-info: #0f172e;
+  --system-warning: #fcd34e;
+  --system-danger: #fca5a7;
+  --system-muted: #9ca3af;
+
+  /* border */
+  --border-1: #3b413d;
+
+  /* linear gradients */
+  --linear-1: linear-gradient(90deg, #6d4df2 0%, #8c71ff 100%);
+  --linear-2: linear-gradient(-180deg, #6e4ef2 0%, transparent 100%);
+  --linear-3: linear-gradient(-180deg, #5e5e63 0%, transparent 100%);
+  --linear-4: linear-gradient(-90deg, #659932 0%, #a8ff53 100%);
+  --linear-5: linear-gradient(-90deg, rgba(255, 255, 255, 0.32) 0%, rgb(255, 255, 255) 100%);
+
+  /* Dark mode custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: #1f1f24; /* Darker background for scrollbar track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #3b3b41; /* Dark thumb color */
+    border-radius: 8px; /* Rounded edges for the thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #4a4a51; /* Slightly lighter color on hover */
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #272730; /* Track color for the scrollbar */
+  }
+
+  /* custom classes */
+  .bg-overlay {
+    background: linear-gradient(180deg, rgba(39, 39, 48, 0) 0%, #272730 100%);
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -10,44 +158,6 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-2xl: 1400px;
-
-  --color-primary-1: var(--theme-primary-1);
-  --color-primary-2: var(--theme-primary-2);
-  --color-primary-3: var(--theme-primary-3);
-
-  --color-secondary-1: var(--theme-secondary-1);
-  --color-secondary-2: var(--theme-secondary-2);
-  --color-secondary-3: var(--theme-secondary-3);
-
-  --color-neutral-0: var(--neutral-0);
-  --color-neutral-100: var(--neutral-100);
-  --color-neutral-200: var(--neutral-200);
-  --color-neutral-300: var(--neutral-300);
-  --color-neutral-400: var(--neutral-400);
-  --color-neutral-500: var(--neutral-500);
-  --color-neutral-600: var(--neutral-600);
-  --color-neutral-700: var(--neutral-700);
-  --color-neutral-800: var(--neutral-800);
-  --color-neutral-900: var(--neutral-900);
-  --color-neutral-1000: var(--neutral-1000);
-
-  --color-system-success: var(--system-success);
-  --color-system-info: var(--system-info);
-  --color-system-warning: var(--system-warning);
-  --color-system-danger: var(--system-danger);
-  --color-system-muted: var(--system-muted);
-
-  --color-border-1: var(--border-1);
-
-  --color-bg-1: var(--bg-1);
-  --color-bg-2: var(--bg-2);
-  --color-bg-3: var(--bg-3);
-  --color-bg-4: var(--bg-4);
-  --color-bg-5: var(--bg-5);
-  --color-bg-6: var(--bg-6);
-
-  --font-body: var(--font-dm-mono);
-  --font-secondary: var(--font-urbanist);
 
   --leading-extra-tight: 1.2;
 
@@ -145,195 +255,55 @@
   }
 }
 
-@utility flex-center {
-  @apply flex items-center justify-center;
-}
+@theme inline {
+  --color-primary-1: var(--theme-primary-1);
+  --color-primary-2: var(--theme-primary-2);
+  --color-primary-3: var(--theme-primary-3);
 
-@utility flex-between {
-  @apply flex items-center justify-between;
-}
+  --color-secondary-1: var(--theme-secondary-1);
+  --color-secondary-2: var(--theme-secondary-2);
+  --color-secondary-3: var(--theme-secondary-3);
 
-@utility flex-start {
-  @apply flex items-center justify-start;
-}
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-1000: var(--neutral-1000);
 
-@layer base {
-  :root {
-    /* bg image */
-    --hero-bg-img: url('/hero/hero-bg.png');
+  --color-system-success: var(--system-success);
+  --color-system-info: var(--system-info);
+  --color-system-warning: var(--system-warning);
+  --color-system-danger: var(--system-danger);
+  --color-system-muted: var(--system-muted);
 
-    /* theme */
-    --theme-primary-1: #6e4ef2;
-    --theme-primary-2: #62a92b;
-    --theme-primary-3: #be6895;
-    --theme-secondary-1: #21212d;
-    --theme-secondary-3: #b2a4ab;
+  --color-border-1: var(--border-1);
 
-    /* bg */
-    --bg-1: #edeaf8;
-    --bg-2: #6e4ef2;
-    --bg-3: #ffffff;
-    --bg-4: #fbf8f9;
-    --bg-5: #e8e8e8;
-    --bg-6: #f6f4fd;
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-bg-4: var(--bg-4);
+  --color-bg-5: var(--bg-5);
+  --color-bg-6: var(--bg-6);
 
-    /* neutral */
-    --neutral-0: #1f1f24;
-    --neutral-100: #272730;
-    --neutral-200: #565662;
-    --neutral-300: #5e5e65;
-    --neutral-400: #6d6d72;
-    --neutral-500: #858587;
-    --neutral-600: #969698;
-    --neutral-700: #b2b2ba;
-    --neutral-800: #c5c5ca;
-    --neutral-900: #edeaf8;
-    --neutral-1000: #ffffff;
-
-    /* system */
-    --system-success: #64e1b0;
-    --system-info: #5577a7;
-    --system-warning: #ffd45d;
-    --system-danger: #ec4040;
-    --system-muted: #9ca3af;
-
-    /* border */
-    --border-1: #c0dcbc;
-
-    /* linear gradient */
-    --linear-1: linear-gradient(90deg, #6d4df2 0%, #8c71ff 100%);
-    --linear-2: linear-gradient(-180deg, #6e4ef2 0%, transparent 100%);
-    --linear-3: linear-gradient(-180deg, #dfdfea 0%, rgba(223, 223, 234, 0.31) 31%, rgba(223, 223, 234, 0) 100%);
-    --linear-4: linear-gradient(-90deg, #33a381 0%, #129840 100%);
-    --linear-5: linear-gradient(-90deg, rgba(31, 31, 36, 0.45) 0%, rgb(31, 31, 36) 100%);
-    /* shadow */
-    --shadow-1: 0 13px 35px -12px rgba(35, 35, 35, 0.1);
-    --shadow-2: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
-
-    /* degree */
-    --angle: 360deg;
-
-    /* Light mode custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 12px;
-      background-color: #f0f0f5; /* Lighter background for scrollbar track */
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #c0c0c5; /* Light thumb color */
-      border-radius: 8px; /* Rounded edges for the thumb */
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #a9a9b0; /* Slightly darker color on hover */
-    }
-
-    ::-webkit-scrollbar-track {
-      background-color: #e0e0e5; /* Track color for the scrollbar */
-    }
-  }
-
-  .dark {
-    /* Dark theme customizations */
-    --hero-bg-img: url('/hero/hero-bg-dark.png');
-    --theme-primary-1: #6e4ef2;
-    --theme-primary-2: #a8ff53;
-    --theme-primary-3: #fcc6e2;
-    --theme-secondary-1: #21212d;
-    --theme-secondary-2: #f778ba;
-    --theme-secondary-3: #40363b;
-
-    /* Dark mode backgrounds */
-    --bg-1: #24242d;
-    --bg-2: #272730;
-    --bg-3: #272730;
-    --bg-4: #1f1f24;
-    --bg-5: #1f1f24;
-    --bg-6: #2a2a31;
-
-    /* Dark mode neutrals */
-    --neutral-0: #ffffff;
-    --neutral-100: #e9e9ea;
-    --neutral-200: #bcbcbe;
-    --neutral-300: #8f8f92;
-    --neutral-400: #79797c;
-    --neutral-500: #636366;
-    --neutral-600: #3b3b41;
-    --neutral-700: #2a2a31;
-    --neutral-800: #24242d;
-    --neutral-900: #272730;
-    --neutral-1000: #1f1f24;
-
-    /* system colors */
-    --system-success: #10b983;
-    --system-info: #0f172e;
-    --system-warning: #fcd34e;
-    --system-danger: #fca5a7;
-    --system-muted: #9ca3af;
-
-    /* border */
-    --border-1: #3b413d;
-
-    /* linear gradients */
-    --linear-1: linear-gradient(90deg, #6d4df2 0%, #8c71ff 100%);
-    --linear-2: linear-gradient(-180deg, #6e4ef2 0%, transparent 100%);
-    --linear-3: linear-gradient(-180deg, #5e5e63 0%, transparent 100%);
-    --linear-4: linear-gradient(-90deg, #659932 0%, #a8ff53 100%);
-    --linear-5: linear-gradient(-90deg, rgba(255, 255, 255, 0.32) 0%, rgb(255, 255, 255) 100%);
-
-    /* Dark mode custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 12px;
-      background-color: #1f1f24; /* Darker background for scrollbar track */
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #3b3b41; /* Dark thumb color */
-      border-radius: 8px; /* Rounded edges for the thumb */
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #4a4a51; /* Slightly lighter color on hover */
-    }
-
-    ::-webkit-scrollbar-track {
-      background-color: #272730; /* Track color for the scrollbar */
-    }
-
-    /* custom classes */
-    .bg-overlay {
-      background: linear-gradient(180deg, rgba(39, 39, 48, 0) 0%, #272730 100%);
-    }
-  }
+  --font-body: var(--font-dm-mono);
+  --font-secondary: var(--font-urbanist);
 }
 
 @layer base {
   * {
-    @apply m-0 box-border list-none !scroll-smooth p-0;
+    @apply m-0 box-border list-none scroll-smooth! p-0;
   }
 
   body {
     @apply bg-bg-5 font-body text-base leading-normal font-normal text-neutral-200;
   }
 
-  button {
-    @apply active:outline-none;
-  }
-
-  p {
-    @apply leading-[26px];
-  }
-}
-
-/* Container and typography */
-@layer components {
-  .container {
-    @apply mx-auto w-full px-[12px];
-    @apply sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px];
-  }
-}
-
-@layer utilities {
   h1,
   h2,
   h3,
@@ -363,6 +333,34 @@
   }
   h6 {
     @apply text-[20px] font-medium;
+  }
+
+  button {
+    @apply active:outline-none;
+  }
+
+  p {
+    @apply leading-6.5;
+  }
+}
+
+/* Container and typography */
+@layer components {
+  .container {
+    @apply mx-auto w-full px-3;
+    @apply sm:max-w-135 md:max-w-180 lg:max-w-240 xl:max-w-285 2xl:max-w-330;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .flex-start {
+    @apply flex items-center justify-start;
   }
 
   /* Utilities */

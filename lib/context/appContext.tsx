@@ -1,19 +1,7 @@
 'use client'
 import { getHero } from '@/lib/actions/hero.action'
 import { getAllProjects } from '@/lib/actions/project.action'
-import { CombinedContactData, CombinedSocialContactData } from '@/types'
 import { createContext, FC, ReactNode, useContext, useEffect, useState } from 'react'
-import {
-  RiFacebookCircleFill,
-  RiGithubFill,
-  RiLinkedinFill,
-  RiMailFill,
-  RiMap2Fill,
-  RiPhoneFill,
-  RiTwitterXFill,
-  RiWhatsappLine,
-} from 'react-icons/ri'
-import { getAdminContacts } from '../actions/adminContact.action'
 import { getAllBlogs } from '../actions/blog.action'
 import { getAllCooperations } from '../actions/cooperation.action'
 import { getCooperationAvatar } from '../actions/cooperationAvatar.action'
@@ -24,10 +12,8 @@ import { getExperienceTitle } from '../actions/experienceTitle.action'
 import { getAllGits } from '../actions/gitJournaling.action'
 import { getSkills } from '../actions/mySkill.action'
 import { getAllServices } from '../actions/service.action'
-import { getSocialContacts } from '../actions/socialContact.action'
 import { getAllStats } from '../actions/statistics.action'
 import { getAllTechnologies } from '../actions/technology.action'
-import { IAdminContact } from '../database/models/adminContact.model'
 import { IBlog } from '../database/models/blog.model'
 import { ICooperation } from '../database/models/cooperation.model'
 import { ICooperationAvatar } from '../database/models/cooperationAvatar.model'
@@ -40,7 +26,6 @@ import { IHero } from '../database/models/hero.model'
 import { IMySkill } from '../database/models/mySkill.model'
 import { IProject } from '../database/models/project.model'
 import { IService } from '../database/models/service.model'
-import { ISocialContacts } from '../database/models/socialContacts.model'
 import { IStatistics } from '../database/models/statistics.model'
 import { ITechnology } from '../database/models/technology.model'
 
@@ -53,12 +38,6 @@ interface AppContextProps {
   fetchTechnology: () => Promise<void>
   blogs: IBlog[]
   fetchBlogs: () => Promise<void>
-  adminContacts: IAdminContact | null
-  fetchAdminContacts: () => Promise<void>
-  combinedContactListData: CombinedContactData[]
-  socialContacts: ISocialContacts | null
-  fetchSocialContacts: () => Promise<void>
-  combinedSocialLinkData: CombinedSocialContactData[]
   skills: IMySkill | null
   fetchSkills: () => Promise<void>
   educations: IEducation[]
@@ -88,10 +67,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [hero, setHero] = useState<IHero | null>(null)
   const [technologies, setTechnologies] = useState<ITechnology[]>([])
   const [blogs, setBlogs] = useState<IBlog[]>([])
-  const [adminContacts, setAdminContacts] = useState<IAdminContact | null>(null)
-  const [combinedContactListData, setCombinedContactListData] = useState<CombinedContactData[]>([])
-  const [socialContacts, setSocialContacts] = useState<ISocialContacts | null>(null)
-  const [combinedSocialLinkData, setCombinedSocialLinkData] = useState<CombinedSocialContactData[]>([])
   const [skills, setSkills] = useState<IMySkill | null>(null)
   const [educations, setEducations] = useState<IEducation[]>([])
   const [gits, setGits] = useState<IGit[]>([])
@@ -121,62 +96,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const fetchBlogs = async () => {
     const fetchedBlogs = await getAllBlogs()
     setBlogs(fetchedBlogs)
-  }
-
-  const fetchAdminContacts = async () => {
-    const fetchedAdminContacts = await getAdminContacts()
-    setAdminContacts(fetchedAdminContacts)
-
-    // Combine MongoDB data with default structure
-    const combinedData = [
-      {
-        id: 1,
-        mediaName: 'phone number',
-        mediaData: fetchedAdminContacts.phone_number,
-        link: `tel:${fetchedAdminContacts.phone_number}`,
-        icon: RiPhoneFill,
-      },
-      {
-        id: 2,
-        mediaName: 'email',
-        mediaData: fetchedAdminContacts.email,
-        link: `mailto:${fetchedAdminContacts.email}`,
-        icon: RiMailFill,
-      },
-      {
-        id: 3,
-        mediaName: 'whatsapp',
-        mediaData: fetchedAdminContacts.whatsapp,
-        link: 'https://wa.me/+8801601016160',
-        icon: RiWhatsappLine,
-      },
-      {
-        id: 4,
-        mediaName: 'address',
-        mediaData: fetchedAdminContacts.address,
-        link: 'https://maps.app.goo.gl/XT4Dd4TYtF6LS9Yq7',
-        icon: RiMap2Fill,
-      },
-    ]
-    setCombinedContactListData(combinedData)
-  }
-
-  const fetchSocialContacts = async () => {
-    try {
-      const fetchedSocialContacts = await getSocialContacts()
-      setSocialContacts(fetchedSocialContacts)
-
-      // Combine MongoDB data with default structure
-      const combineData = [
-        { id: 1, link: fetchedSocialContacts.facebook_link, icon: RiFacebookCircleFill },
-        { id: 2, link: fetchedSocialContacts.twitter_link, icon: RiTwitterXFill },
-        { id: 3, link: fetchedSocialContacts.linkedin_link, icon: RiLinkedinFill },
-        { id: 4, link: fetchedSocialContacts.github_link, icon: RiGithubFill },
-      ]
-      setCombinedSocialLinkData(combineData)
-    } catch (error) {
-      console.error('Error fetching social contacts:', error)
-    }
   }
 
   const fetchSkills = async () => {
@@ -236,8 +155,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchHero()
     fetchTechnology()
     fetchBlogs()
-    fetchAdminContacts()
-    fetchSocialContacts()
     fetchSkills()
     fetchEducations()
     fetchGits()
@@ -261,12 +178,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fetchTechnology,
         blogs,
         fetchBlogs,
-        adminContacts,
-        fetchAdminContacts,
-        combinedContactListData,
-        socialContacts,
-        fetchSocialContacts,
-        combinedSocialLinkData,
         skills,
         fetchSkills,
         educations,

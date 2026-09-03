@@ -73,12 +73,6 @@ const AdminProfile = async () => {
             <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>
-        <li>
-          <Link className="admin-link group" href="/adminProfile/contacts">
-            Contacts
-            <RiArrowRightLine className="admin-link-icon" />
-          </Link>
-        </li>
       </ul>
     </div>
   )

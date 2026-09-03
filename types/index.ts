@@ -120,7 +120,6 @@ export type DeleteBlogParams = {
   blogId: string
 }
 
-// ====== ADMIN CONTACT PARAMS ======
 export interface CombinedContactData {
   id: number
   mediaName: string
@@ -129,7 +128,6 @@ export interface CombinedContactData {
   icon: IconType
 }
 
-// ====== SOCIAL CONTACT PARAMS ======
 export interface CombinedSocialContactData {
   id: number
   link: string

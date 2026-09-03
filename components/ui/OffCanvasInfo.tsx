@@ -1,4 +1,4 @@
-import { useAppContext } from '@/lib/context/appContext'
+import { contactList, socialLinkList } from '@/constants'
 import Link from 'next/link'
 import React from 'react'
 import { RiCloseLine } from 'react-icons/ri'
@@ -9,11 +9,10 @@ interface OffCanvasInfoProps {
 }
 
 const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
-  const { combinedContactListData, combinedSocialLinkData } = useAppContext()
   return (
     <>
       <div
-        className={`bg-neutral-1000 ease-custom-ease fixed top-0 left-0 z-50 h-full w-[340px] overflow-y-scroll p-[30px] transition-transform !duration-300 ${
+        className={`bg-neutral-1000 ease-custom-ease fixed top-0 left-0 z-50 h-full w-85 overflow-y-scroll p-7.5 transition-transform duration-300! ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         style={{ scrollbarWidth: 'none' }}
@@ -30,34 +29,51 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
         {/* Offcanvas Close Icon End */}
 
         {/* Offcanvas Content */}
-        <div className="mb-8">
-          <h3 className="h3 mb-0">Get in touch</h3>
+        <div className="mb-4">
+          <h3 className="h3 mb-0">Get in Touch</h3>
         </div>
 
-        <div className="border-primary-2 mb-[30px] border-t pt-[25px]">
+        <div className="border-primary-2 mb-7.5 border-t pt-6.25">
           {/* Contact Details Start */}
-          <div className="mb-[30px]">
-            <p className="mb-8 text-base !leading-[26px] font-medium text-neutral-200">
+          <div className="mb-7.5">
+            <p className="mb-8 text-base leading-6.5! font-medium text-neutral-200">
               I&apos;m always excited to take on new projects and collaborate with innovative minds.
             </p>
 
-            {combinedContactListData.map(({ id, mediaName, mediaData }) => (
-              <div key={id} className="mb-4">
-                <span className="text-[19px] text-neutral-400 capitalize">{mediaName}</span>
-                <p className="mb-0 overflow-x-scroll" style={{ scrollbarWidth: 'none' }}>
-                  {mediaData}
-                </p>
-              </div>
-            ))}
+            {contactList.map(({ id, mediaName, mediaData, link }) => {
+              const isExternal = link.startsWith('http')
+
+              return (
+                <div key={id} className="mb-4">
+                  <span className="text-[19px] text-neutral-400 capitalize">{mediaName}</span>
+                  <p className="mb-0 overflow-x-scroll" style={{ scrollbarWidth: 'none' }}>
+                    <Link
+                      href={link}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
+                      className="hover:text-primary-2 transition-all duration-300"
+                    >
+                      {mediaData}
+                    </Link>
+                  </p>
+                </div>
+              )
+            })}
           </div>
           {/* Contact Details End */}
 
           {/* Social Contacts List Start */}
           <div>
-            <p className="mb-2 text-[19px] text-neutral-400">Social</p>
+            <p className="mb-2 text-[19px] text-neutral-400">Social Links</p>
             <div className="text-neutral-0 flex items-center gap-4">
-              {combinedSocialLinkData.map(({ id, link, icon: Icon }) => (
-                <Link key={id} className="hover:text-primary-2 transition-all duration-300" href={link} target="_blank">
+              {socialLinkList.map(({ id, link, icon: Icon }) => (
+                <Link
+                  key={id}
+                  className="hover:text-primary-2 transition-all duration-300"
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon size={18} className="text-xl" />
                 </Link>
               ))}
@@ -70,7 +86,7 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
       {/* Offcanvas Overlay Start */}
       {isOpen && (
         <div
-          className="fixed top-0 left-0 z-40 h-full w-full bg-black opacity-70 transition-all !duration-300"
+          className="fixed top-0 left-0 z-40 h-full w-full bg-black opacity-70 transition-all duration-300!"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
