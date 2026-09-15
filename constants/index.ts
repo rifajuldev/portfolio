@@ -117,78 +117,91 @@ export const technologies = [
     tech_img_url: '/technologies/nextjs.svg',
     tech_official_url: 'https://nextjs.org',
     show_in_hero: true,
+    skill_position: 'Top',
   },
   {
     tech_name: 'React',
     tech_img_url: '/technologies/react.svg',
     tech_official_url: 'https://react.dev',
     show_in_hero: true,
+    skill_position: 'Top',
   },
   {
     tech_name: 'TypeScript',
     tech_img_url: '/technologies/typescript.svg',
     tech_official_url: 'https://www.typescriptlang.org/',
     show_in_hero: true,
+    skill_position: 'Bottom',
   },
   {
     tech_name: 'NodeJS',
     tech_img_url: '/technologies/nodejs.svg',
     tech_official_url: 'https://nodejs.org/en',
     show_in_hero: true,
+    skill_position: 'Bottom',
   },
   {
     tech_name: 'ExpressJS',
     tech_img_url: '/technologies/expressjs.svg',
     tech_official_url: 'https://expressjs.com/',
     show_in_hero: true,
+    skill_position: 'Bottom',
   },
   {
     tech_name: 'MongoDB',
     tech_img_url: '/technologies/mongodb.svg',
     tech_official_url: 'https://www.mongodb.com',
     show_in_hero: true,
+    skill_position: 'Bottom',
   },
   {
     tech_name: 'Tailwind',
     tech_img_url: '/technologies/tailwind.svg',
     tech_official_url: 'https://tailwindcss.com',
     show_in_hero: true,
+    skill_position: 'Bottom',
   },
   {
     tech_name: 'Firebase',
     tech_img_url: '/technologies/firebase.svg',
     tech_official_url: 'https://firebase.google.com',
     show_in_hero: true,
+    skill_position: 'Top',
   },
   {
     tech_name: 'Redux',
     tech_img_url: '/technologies/redux.svg',
     tech_official_url: 'https://redux.js.org/',
     show_in_hero: true,
+    skill_position: 'Top',
   },
   {
     tech_name: 'Bootstrap',
     tech_img_url: '/technologies/bootstrap.svg',
     tech_official_url: 'https://getbootstrap.com/',
     show_in_hero: true,
+    skill_position: 'Top',
   },
   {
     tech_name: 'HTML',
     tech_img_url: '/technologies/html.svg',
     tech_official_url: 'https://html.com/',
     show_in_hero: false,
+    skill_position: 'Top',
   },
   {
     tech_name: 'CSS',
     tech_img_url: '/technologies/css.svg',
     tech_official_url: 'https://www.w3.org/TR/CSS/',
     show_in_hero: false,
+    skill_position: 'Top',
   },
   {
     tech_name: 'JavaScript',
     tech_img_url: '/technologies/javascript.svg',
     tech_official_url: 'https://www.javascript.com/',
     show_in_hero: false,
+    skill_position: 'Bottom',
   },
 ]
 
@@ -228,6 +241,14 @@ export const mySkillDefaultValues = {
   others_technologies: [],
 }
 
+export const mySkills = {
+  front_end_technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React', 'NextJS'],
+  back_end_technologies: ['Node.js', 'Express'],
+  database_technologies: ['MongoDB', 'Mongoose'],
+  tools_platform_technologies: ['Git', 'Github'],
+  others_technologies: ['RESTful APIs'],
+}
+
 export const educationDefaultValues = {
   start_date: new Date(),
   end_date: new Date(),
@@ -236,16 +257,60 @@ export const educationDefaultValues = {
   desc: '',
 }
 
+export const educations = [
+  {
+    _id: 'govt-bl-college',
+    start_date: '2024-01-01T09:16:43.000Z',
+    end_date: undefined as string | undefined,
+    isPresent: true,
+    institute: 'Govt. BL College, Khulna',
+    desc: "Bachelor's in Mathematics",
+  },
+  {
+    _id: 'programming-hero',
+    start_date: '2024-01-01T09:16:43.000Z',
+    end_date: '2024-01-01T09:16:43.000Z',
+    isPresent: false,
+    institute: 'Programming Hero',
+    desc: 'Certification in MERN Stack Developer Course',
+  },
+]
+
 export const gitJournalingDefaultValues = {
   date: new Date(),
   title: '',
 }
+
+export const gits = [
+  {
+    _id: 'portfolio-finished',
+    date: '2025-02-13T11:55:50.000Z',
+    title: 'portfolio finished successfully',
+  },
+  {
+    _id: 'event-platform-finished',
+    date: '2024-12-25T11:55:50.000Z',
+    title: 'event_platform finished successfully',
+  },
+  {
+    _id: 'snapgram-finished',
+    date: '2024-09-07T11:55:50.000Z',
+    title: 'snapgram finished successfully',
+  },
+]
 
 export const experienceTitleDefaultValues = {
   first_title: '',
   second_title: '',
   third_title: '',
   fourth_title: '',
+}
+
+export const experienceTitle = {
+  first_title: '2+',
+  second_title: 'years of',
+  third_title: 'passion',
+  fourth_title: 'for programming techniques',
 }
 
 export const experienceDefaultValues = {
@@ -259,12 +324,93 @@ export const experienceDefaultValues = {
   isPresent: false,
 }
 
+export const experiences = [
+  {
+    _id: 'fiverr',
+    company_name: 'Fiverr',
+    company_logo_url: '/experience/fiverr.png',
+    role: 'Full Stack Web Developer',
+    job_start_date: '2025-04-01T11:39:38.000Z',
+    job_end_date: undefined as string | undefined,
+    isPresent: true,
+    job_desc_list: [
+      {
+        text: 'Developed responsive and dynamic web applications using modern front-end technologies.',
+      },
+      {
+        text: 'Specialized in React.js, Next.js, and Tailwind CSS for building scalable UIs.',
+        highlight: 'React.js, Next.js, and Tailwind CSS',
+      },
+      {
+        text: 'Integrated third-party APIs and optimized performance for seamless user experiences.',
+      },
+      {
+        text: 'Passionate about crafting visually appealing and efficient web solutions.',
+      },
+    ],
+    experi_technologies: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'Bootstrap',
+      'TailwindCSS',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Firebase',
+      'React',
+      'NextJS',
+      'Redux',
+    ],
+  },
+]
+
 export const serviceDefaultValues = {
   title: '',
   icon_name: '',
   desc: '',
   highlightText: '',
 }
+
+export const services = [
+  {
+    title: 'Web Development',
+    icon_name: 'RiWindowLine',
+    desc: 'Building fast, responsive websites and web apps with Next.js, React, and modern tooling tailored to your product goals.',
+    highlightText: 'Next.js React',
+  },
+  {
+    title: 'Mobile Apps',
+    icon_name: 'RiSmartphoneLine',
+    desc: 'Cross-platform mobile experiences with React Native that feel native on both iOS and Android from a single codebase.',
+    highlightText: 'React Native',
+  },
+  {
+    title: 'UI / UX Design',
+    icon_name: 'RiPaletteLine',
+    desc: 'Clean interfaces and thoughtful user flows that balance aesthetics with usability so your product is easy to love.',
+    highlightText: 'user flows',
+  },
+  {
+    title: 'Backend & APIs',
+    icon_name: 'RiServerLine',
+    desc: 'Scalable Node.js and Express APIs with solid auth, validation, and integrations that keep your app reliable.',
+    highlightText: 'Node.js Express',
+  },
+  {
+    title: 'Database Design',
+    icon_name: 'RiDatabase2Line',
+    desc: 'Well-structured MongoDB and MySQL schemas designed for performance, clarity, and long-term maintainability.',
+    highlightText: 'MongoDB MySQL',
+  },
+  {
+    title: 'Maintenance & Support',
+    icon_name: 'RiToolsLine',
+    desc: 'Ongoing improvements, bug fixes, and performance tuning so your product stays secure, fast, and up to date.',
+    highlightText: 'performance tuning',
+  },
+]
 
 export const cooperationTitleDefaultValues = {
   first_title: '',

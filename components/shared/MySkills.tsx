@@ -1,19 +1,11 @@
-'use client'
-import { skillDisplayNames } from '@/constants'
-import { useAppContext } from '@/lib/context/appContext'
-import Skeleton from 'react-loading-skeleton'
+import { mySkills, skillDisplayNames } from '@/constants'
 import MySkillsSlide from '../ui/MySkillsSlide'
 import RotateAnimation from '../ui/RotateAnimation'
 import SectionHeading from '../ui/SectionHeading'
 
+const filteredSkills = Object.entries(mySkills)
+
 const MySkills = () => {
-  const { skills } = useAppContext()
-
-  // Filter out unnecessary keys
-  const filteredSkills = Object.entries(skills || {}).filter(
-    ([key]) => !['_id', 'createdAt', 'updatedAt', '__v'].includes(key)
-  )
-
   return (
     <section id="skills" className="pb-[60px]">
       <div className="bg-bg-3 border-border-1 relative overflow-hidden rounded-lg border">
@@ -32,24 +24,16 @@ const MySkills = () => {
                 {/* Right Side */}
                 <div className="border-border-1 mt-8 pl-8 md:border-l md:pl-0 lg:mt-0 lg:w-1/2">
                   <div className="mx-auto md:w-5/6">
-                    {filteredSkills.length > 0 ? (
-                      <ul className="text-neutral-0 flex h-full flex-col justify-between gap-4 pl-4">
-                        {filteredSkills.map(([key, mySkills]) => (
-                          <li key={key} className="before-item-dot my-skills-item-dot relative">
-                            <div className="flex flex-col gap-2 md:flex-row">
-                              <p className="mb-0 text-nowrap">{skillDisplayNames[key] || key}: </p>
-                              <span className="text-neutral-300">
-                                {Array.isArray(mySkills) ? mySkills.join(', ') : mySkills}
-                              </span>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <div className="w-4/5">
-                        <Skeleton count={5} height={20} style={{ marginBottom: 20 }} />
-                      </div>
-                    )}
+                    <ul className="text-neutral-0 flex h-full flex-col justify-between gap-4 pl-4">
+                      {filteredSkills.map(([key, skills]) => (
+                        <li key={key} className="before-item-dot my-skills-item-dot relative">
+                          <div className="flex flex-col gap-2 md:flex-row">
+                            <p className="mb-0 text-nowrap">{skillDisplayNames[key] || key}: </p>
+                            <span className="text-neutral-300">{skills.join(', ')}</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>

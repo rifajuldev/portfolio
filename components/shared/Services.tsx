@@ -1,14 +1,10 @@
-'use client'
-import { useAppContext } from '@/lib/context/appContext'
+import { services } from '@/constants'
 import Link from 'next/link'
 import * as RiIcons from 'react-icons/ri'
-import Skeleton from 'react-loading-skeleton'
 import SectionAnimatedBorder from '../ui/SectionAnimatedBorder'
 import SectionHeading from '../ui/SectionHeading'
 
 const Services = () => {
-  const { services } = useAppContext()
-
   return (
     <section id="services" className="mb-8">
       <SectionAnimatedBorder className="p-4 md:p-6 lg:p-8">
@@ -24,55 +20,39 @@ const Services = () => {
         <div className="relative z-20 mt-7">
           {/* Service Card Start */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.length > 0 ? (
-              services.map(({ _id, title, icon_name, desc, highlightText }) => {
-                const IconComponent = RiIcons[icon_name as keyof typeof RiIcons]
+            {services.map(({ title, icon_name, desc, highlightText }) => {
+              const IconComponent = RiIcons[icon_name as keyof typeof RiIcons]
 
-                return (
-                  <div
-                    key={_id}
-                    className="bg-bg-3 border-border-1 group h-full rounded-md border px-[35px] pt-[70px] pb-[35px] transition-all duration-300 ease-in-out hover:translate-y-[-8px] lg:px-[42px] lg:pt-[93px] lg:pb-[42px]"
-                  >
-                    {IconComponent ? (
-                      <IconComponent className="text-neutral-0 group-hover:text-primary-2 h-6 w-6 transition-all duration-300" />
-                    ) : null}
+              return (
+                <div
+                  key={title}
+                  className="bg-bg-3 border-border-1 group h-full rounded-md border px-8.75 pt-17.5 pb-8.75 transition-all duration-300 ease-in-out hover:-translate-y-2 lg:px-10.5 lg:pt-23.25 lg:pb-10.5"
+                >
+                  {IconComponent ? (
+                    <IconComponent className="text-neutral-0 group-hover:text-primary-2 h-6 w-6 transition-all duration-300" />
+                  ) : null}
 
-                    <h6 className="my-4 text-[20px] leading-tight font-medium">{title}</h6>
+                  <h6 className="my-4 text-[20px] leading-tight font-medium">{title}</h6>
 
-                    {/* Description with Highlighted Text */}
-                    <p
-                      className="mb-4 text-base leading-normal font-normal text-neutral-300"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText
-                          ? (desc || '').replace(
-                              new RegExp(`(${highlightText.split(' ').join('|')})`, 'gi'),
-                              '<span class="text-secondary-2">$1</span>'
-                            )
-                          : desc || '',
-                      }}
-                    ></p>
-                  </div>
-                )
-              })
-            ) : (
-              <>
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="bg-bg-3 border-border-1 group flex h-full flex-col rounded-md border px-[35px] pt-[70px] pb-[35px] transition-all duration-300 ease-in-out hover:translate-y-[-8px] lg:px-[42px] lg:pt-[93px] lg:pb-[42px]"
-                  >
-                    <Skeleton height={30} containerClassName="flex-1" style={{ marginBottom: '15px' }} />
-                    <Skeleton height={40} containerClassName="flex-1" style={{ marginBottom: '15px' }} />
-                    <Skeleton count={3} height={20} containerClassName="flex-1" style={{ marginBottom: '5px' }} />
-                  </div>
-                ))}
-              </>
-            )}
+                  <p
+                    className="mb-4 text-base leading-normal font-normal text-neutral-300"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText
+                        ? desc.replace(
+                            new RegExp(`(${highlightText.split(' ').join('|')})`, 'gi'),
+                            '<span class="text-secondary-2">$1</span>'
+                          )
+                        : desc,
+                    }}
+                  ></p>
+                </div>
+              )
+            })}
           </div>
           {/* Service Card End */}
 
           {/* More Services Text */}
-          <div className="pt-[60px] text-center">
+          <div className="pt-15 text-center">
             <p className="text-[16px] text-neutral-300">
               Excited to take on <span className="text-neutral-0">new projects</span> and collaborate.
               <br />
