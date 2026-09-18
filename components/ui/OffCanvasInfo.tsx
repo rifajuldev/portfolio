@@ -17,21 +17,18 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
         }`}
         style={{ scrollbarWidth: 'none' }}
       >
-        {/* Offcanvas Close Icon Start */}
-        <div className="-mt-4 text-right">
+        {/* Offcanvas Header Start */}
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="leading-extra-tight text-neutral-0 mb-0 text-[28px] font-medium">Get in Touch</h3>
           <button
             className="text-primary-2 cursor-pointer border-none bg-transparent p-0 text-xl"
             onClick={() => setIsOpen(false)}
+            aria-label="Close"
           >
             <RiCloseLine size={25} />
           </button>
         </div>
-        {/* Offcanvas Close Icon End */}
-
-        {/* Offcanvas Content */}
-        <div className="mb-4">
-          <h3 className="h3 mb-0">Get in Touch</h3>
-        </div>
+        {/* Offcanvas Header End */}
 
         <div className="border-primary-2 mb-7.5 border-t pt-6.25">
           {/* Contact Details Start */}

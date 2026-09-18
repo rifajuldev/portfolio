@@ -66,7 +66,7 @@ export const navItems = [
   { label: 'About me', route: '#about' },
   { label: 'Resume', route: '#resume' },
   { label: 'Projects', route: '#projects' },
-  { label: 'Portfolio', route: '#portfolio' },
+  { label: 'Blog', route: '#blog' },
   { label: 'Skills', route: '#skills' },
   { label: 'Contact', route: '#contact' },
 ]
@@ -88,6 +88,42 @@ export const projectDefaultValues = {
   live_link: '',
   github_link: '',
 }
+
+export const projects = [
+  {
+    _id: 'project-1',
+    title: 'Event Management Platform',
+    desc: 'A modern full-stack event platform built with Next.js, TypeScript, Tailwind CSS, and MongoDB featuring ticket booking, event management, and dynamic search.',
+    client: 'Open Source / Personal',
+    completion_time: '3 Weeks',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
+    project_img_url: '/blog/img-1.png',
+    live_link: 'https://github.com/rifajuldev',
+    github_link: 'https://github.com/rifajuldev',
+  },
+  {
+    _id: 'project-2',
+    title: 'Snapgram - Social Media App',
+    desc: 'A feature-rich social media application enabling image sharing, real-time posts, post likes, saved posts, and user profiles with clean responsive UI.',
+    client: 'Personal Project',
+    completion_time: '2 Weeks',
+    technologies: ['React', 'TypeScript', 'Appwrite', 'Tailwind CSS', 'React Query'],
+    project_img_url: '/blog/img-2.png',
+    live_link: 'https://github.com/rifajuldev',
+    github_link: 'https://github.com/rifajuldev',
+  },
+  {
+    _id: 'project-3',
+    title: 'Developer Portfolio Website',
+    desc: 'A sleek, modern developer portfolio featuring dark mode glassmorphism, animated UI transitions, interactive sliders, and static content integration.',
+    client: 'Self',
+    completion_time: '1 Week',
+    technologies: ['Next.js 16', 'React 19', 'Tailwind CSS', 'TypeScript', 'Swiper'],
+    project_img_url: '/blog/img-3.png',
+    live_link: 'https://github.com/rifajuldev',
+    github_link: 'https://github.com/rifajuldev',
+  },
+]
 
 export const heroDefaultValues = {
   headline: '',
@@ -224,6 +260,39 @@ export const blogDefaultValues = {
   desc: '',
   link: '',
 }
+
+export const blogs = [
+  {
+    _id: 'blog-1',
+    tag: 'Next.js',
+    img_url: '/blog/img-1.png',
+    date: '2025-01-15T00:00:00.000Z',
+    read_time: '5 min',
+    title: 'Building Scalable Web Apps with Next.js & App Router',
+    desc: 'A deep dive into server components, dynamic routing, performance optimization, and best practices in modern web development.',
+    link: 'https://github.com/rifajuldev',
+  },
+  {
+    _id: 'blog-2',
+    tag: 'Tailwind CSS',
+    img_url: '/blog/img-2.png',
+    date: '2025-02-01T00:00:00.000Z',
+    read_time: '4 min',
+    title: 'Designing Beautiful UI Components with Glassmorphism',
+    desc: 'Learn how to combine custom utility classes, smooth hover effects, and CSS gradients for interactive user interfaces.',
+    link: 'https://github.com/rifajuldev',
+  },
+  {
+    _id: 'blog-3',
+    tag: 'Full Stack',
+    img_url: '/blog/img-3.png',
+    date: '2025-02-10T00:00:00.000Z',
+    read_time: '6 min',
+    title: 'RESTful API Architecture & MongoDB Data Modeling',
+    desc: 'Best practices for structuring backend APIs in Node.js and Express with robust schema design and database indexing.',
+    link: 'https://github.com/rifajuldev',
+  },
+]
 
 export const contactDefaultValues = {
   name: '',

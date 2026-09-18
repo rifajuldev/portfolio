@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // modules
 import { Autoplay, Keyboard, Navigation } from 'swiper/modules'
 // Import Swiper styles
+import { projects as staticProjects } from '@/constants'
 import { useAppContext } from '@/lib/context/appContext'
 import { IProject } from '@/lib/database/models/project.model'
 import Image from 'next/image'
@@ -15,13 +16,13 @@ import 'swiper/css'
 import ProjectsSliderNavButton from './ProjectsSliderNavButton'
 
 const ProjectsSlider = () => {
-  const { projects } = useAppContext()
-  // const projects = []
+  const { projects: contextProjects } = useAppContext()
+  const projects = contextProjects && contextProjects.length > 0 ? contextProjects : (staticProjects as IProject[])
 
   return (
     <Swiper
       slidesPerView={1}
-      navigation={true}
+      // navigation={true}
       pagination={{ clickable: true }}
       keyboard={{
         enabled: true,
@@ -38,7 +39,7 @@ const ProjectsSlider = () => {
       {projects.length > 0 ? (
         projects.map((project: IProject) => (
           <SwiperSlide key={project._id} className="relative">
-            <div className="border-border-1 bg-bg-3 mt-8 min-h-[570px] border p-4 md:p-6 lg:p-8">
+            <div className="border-border-1 bg-bg-3 mt-8 min-h-142.5 border p-4 md:p-6 lg:p-8">
               <div className="items-center gap-11 xl:flex">
                 {/* Left side */}
                 <div className="mx-auto lg:w-3/4 xl:w-1/2">
@@ -109,11 +110,11 @@ const ProjectsSlider = () => {
           </SwiperSlide>
         ))
       ) : (
-        <div className="border-border-1 bg-bg-3 mt-8 min-h-[570px] border p-4 md:p-6 lg:p-8">
+        <div className="border-border-1 bg-bg-3 mt-8 min-h-142.5 border p-4 md:p-6 lg:p-8">
           <div className="items-center gap-11 xl:flex">
             {/* Left side Skeleton */}
             <div className="mx-auto lg:w-3/4 xl:w-1/2">
-              <Skeleton className="h-[340px] lg:h-[470px]" />
+              <Skeleton className="h-85 lg:h-117.5" />
             </div>
 
             {/* Right Side Skeleton */}

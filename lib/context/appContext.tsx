@@ -1,4 +1,5 @@
 'use client'
+import { blogs as staticBlogs, projects as staticProjects } from '@/constants'
 import { getHero } from '@/lib/actions/hero.action'
 import { getAllProjects } from '@/lib/actions/project.action'
 import { createContext, FC, ReactNode, useContext, useEffect, useState } from 'react'
@@ -63,10 +64,10 @@ interface AppContextProps {
 const AppContext = createContext<AppContextProps | undefined>(undefined)
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [projects, setProjects] = useState<IProject[]>([])
+  const [projects, setProjects] = useState<IProject[]>(staticProjects as IProject[])
   const [hero, setHero] = useState<IHero | null>(null)
   const [technologies, setTechnologies] = useState<ITechnology[]>([])
-  const [blogs, setBlogs] = useState<IBlog[]>([])
+  const [blogs, setBlogs] = useState<IBlog[]>(staticBlogs as unknown as IBlog[])
   const [skills, setSkills] = useState<IMySkill | null>(null)
   const [educations, setEducations] = useState<IEducation[]>([])
   const [gits, setGits] = useState<IGit[]>([])
@@ -79,8 +80,14 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [statistics, setStatistics] = useState<IStatistics[]>([])
 
   const fetchProjects = async () => {
-    const fetchedProjects = await getAllProjects()
-    setProjects(fetchedProjects)
+    try {
+      const fetchedProjects = await getAllProjects()
+      if (fetchedProjects && fetchedProjects.length > 0) {
+        setProjects(fetchedProjects)
+      }
+    } catch {
+      setProjects(staticProjects as IProject[])
+    }
   }
 
   const fetchHero = async () => {
@@ -94,8 +101,14 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   const fetchBlogs = async () => {
-    const fetchedBlogs = await getAllBlogs()
-    setBlogs(fetchedBlogs)
+    try {
+      const fetchedBlogs = await getAllBlogs()
+      if (fetchedBlogs && fetchedBlogs.length > 0) {
+        setBlogs(fetchedBlogs)
+      }
+    } catch {
+      setBlogs(staticBlogs as unknown as IBlog[])
+    }
   }
 
   const fetchSkills = async () => {
