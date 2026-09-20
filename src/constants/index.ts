@@ -19,9 +19,9 @@ export const socialLinks = {
 
 export const socialLinkList: CombinedSocialContactData[] = [
   { id: 1, link: socialLinks.facebook, icon: RiFacebookCircleFill },
-  { id: 2, link: socialLinks.twitter, icon: RiTwitterXFill },
-  { id: 3, link: socialLinks.linkedin, icon: RiLinkedinFill },
-  { id: 4, link: socialLinks.github, icon: RiGithubFill },
+  { id: 3, link: socialLinks.twitter, icon: RiTwitterXFill },
+  { id: 4, link: socialLinks.linkedin, icon: RiLinkedinFill },
+  { id: 5, link: socialLinks.github, icon: RiGithubFill },
 ]
 
 export const contactInfo = {
@@ -143,7 +143,7 @@ export const hero = {
   last_title: 'Web & App developer',
   desc: 'With 2+ years of expertise in cutting-edge technologies such as NodeJS, ExpressJs, React, React Native, NextJs, MongoDB and MySql... I deliver web solutions that are both innovative and robust.',
   desc_highlighted_text: 'NodeJS, ExpressJs, React, React Native, NextJs, MongoDB and MySql',
-  hero_img_url: 'https://utfs.io/f/NA8LFvDghE1xQmjdIyBg7i1hEpjqzvdsfUOm6HyI2b5lV8ro',
+  hero_img_url: '/hero/hero-cover.png',
   hero_pdf_url: 'https://utfs.io/f/NA8LFvDghE1xMk9oEFicB9Osg0Q7JyWhPAjtnxfrdZo8GvSq',
 }
 

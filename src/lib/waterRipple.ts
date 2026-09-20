@@ -50,21 +50,6 @@ export function triggerWaterDropWave({ x, y, maxRadius, isDarkToLight, duration 
 
     ctx!.clearRect(0, 0, width, height)
 
-    // 1. Initial Drop Impact Splash Ring at switcher center (0ms to 200ms)
-    if (elapsed < 200) {
-      const dropProgress = elapsed / 200
-      const dropRadius = dropProgress * 28
-      const dropAlpha = (1 - dropProgress) * 0.8
-
-      ctx!.save()
-      ctx!.beginPath()
-      ctx!.arc(x, y, Math.max(0, dropRadius), 0, Math.PI * 2)
-      ctx!.strokeStyle = `rgba(255, 255, 255, ${dropAlpha})`
-      ctx!.lineWidth = Math.max(1, 3 * (1 - dropProgress))
-      ctx!.stroke()
-      ctx!.restore()
-    }
-
     // 2. Single Primary Water Drop Wave Front (One clean wave)
     const waveAlpha = (1 - progress * 0.5) * 0.75
     const waveWidth = Math.max(6, 16 * (1 - progress * 0.3))

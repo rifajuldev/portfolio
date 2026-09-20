@@ -35,21 +35,23 @@ const Contact = () => {
                   <div className="icon-flip border-border-1 bg-bg-3 flex h-12 w-12 items-center justify-center rounded-lg border">
                     <Icon className="text-primary-2" size={26} />
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <span className="text-sm text-neutral-400 capitalize">{mediaName}</span>
-                    <h6 className="text-lg break-all">{mediaData}</h6>
+                    <div className="flex gap-2">
+                      <h6 className="text-lg break-all">{mediaData}</h6>
+                      {/* Copy Button */}
+                      <button
+                        onClick={() => handleCopy(id, mediaData)}
+                        className={`border-border-1 text-primary-2 bg-bg-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border transition-colors ${
+                          copiedId === id ? 'bg-bg-3' : 'hover:bg-bg-5 hover:text-neutral-0'
+                        }`}
+                        aria-label="Copy email"
+                        title="Copy email"
+                      >
+                        {copiedId === id ? <HiCheck size={16} /> : <RiFileCopyLine size={16} />}
+                      </button>
+                    </div>
                   </div>
-                  {/* Copy Button */}
-                  <button
-                    onClick={() => handleCopy(id, mediaData)}
-                    className={`border-border-1 text-primary-2 bg-bg-3 flex h-10 w-10 items-center justify-center rounded-lg border ${
-                      copiedId === id ? 'bg-bg-3' : 'hover:bg-bg-5 hover:text-neutral-0'
-                    }`}
-                    aria-label="Copy email"
-                    title="Copy email"
-                  >
-                    {copiedId === id ? <HiCheck size={20} /> : <RiFileCopyLine size={20} />}
-                  </button>
                 </div>
               ) : (
                 <Link href={link} target="_blank" className="flex items-center gap-4">

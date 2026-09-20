@@ -67,10 +67,12 @@ const ThemeToggle = () => {
     <button
       ref={buttonRef}
       onClick={toggleMode}
-      className="flex-center mr-14 h-20 w-19 rounded-none bg-none p-6 focus:outline-none xl:mr-0 xl:bg-[#FFFFFF0D] xl:hover:bg-[#FFFFFF0D] dark:bg-none dark:xl:bg-[#FFFFFF0D] dark:xl:hover:bg-[#FFFFFF0D]"
+      className="flex-center group mr-14 h-20 w-19 rounded-none bg-none p-6 transition-all duration-150 ease-in-out focus:outline-none xl:mr-0 xl:bg-[#FFFFFF0D] xl:hover:bg-[#FFFFFF1A] dark:bg-none dark:xl:bg-[#FFFFFF0D] dark:xl:hover:bg-[#FFFFFF1A]"
       aria-label="Toggle Theme"
     >
-      {mode === 'dark' ? <RiSunFill size={24} color="#ffc107" /> : <RiContrast2Line size={24} color="#ffd45d" />}
+      <span className="flex-center transition-transform duration-300 ease-out group-active:scale-90 group-active:rotate-45">
+        {mode === 'dark' ? <RiSunFill size={24} color="#ffc107" /> : <RiContrast2Line size={24} color="#ffd45d" />}
+      </span>
     </button>
   )
 }
