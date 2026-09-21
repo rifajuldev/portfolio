@@ -1,4 +1,3 @@
-import CustomSessionProvider from '@/lib/auth/CustomSessionProvider'
 import { AppProvider } from '@/lib/context/appContext'
 import type { Metadata } from 'next'
 import { StrictMode } from 'react'
@@ -42,9 +41,7 @@ export default function RootLayout({
       <body className={`${dmMono.variable} ${urbanist.variable}`}>
         <StrictMode>
           <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
-            <CustomSessionProvider>
-              <AppProvider>{children}</AppProvider>
-            </CustomSessionProvider>
+            <AppProvider>{children}</AppProvider>
           </SkeletonTheme>
         </StrictMode>
         <Toaster position="top-center" reverseOrder={false} />

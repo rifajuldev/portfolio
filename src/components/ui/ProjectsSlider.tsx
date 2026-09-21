@@ -6,7 +6,7 @@ import { Autoplay, Keyboard, Navigation } from 'swiper/modules'
 // Import Swiper styles
 import { projects as staticProjects } from '@/constants'
 import { useAppContext } from '@/lib/context/appContext'
-import { IProject } from '@/lib/database/models/project.model'
+import { IProject } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { RiArrowRightUpLine, RiGithubFill } from 'react-icons/ri'

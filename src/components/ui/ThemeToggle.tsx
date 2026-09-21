@@ -1,4 +1,5 @@
 'use client'
+import { QuickTooltip } from '@/components/ui/tooltip'
 import { triggerWaterDropWave } from '@/lib/waterRipple'
 import { useRef, useState } from 'react'
 import { RiContrast2Line, RiSunFill } from 'react-icons/ri'
@@ -64,16 +65,23 @@ const ThemeToggle = () => {
   }
 
   return (
-    <button
-      ref={buttonRef}
-      onClick={toggleMode}
-      className="flex-center group mr-14 h-20 w-19 rounded-none bg-none p-6 transition-all duration-150 ease-in-out focus:outline-none xl:mr-0 xl:bg-[#FFFFFF0D] xl:hover:bg-[#FFFFFF1A] dark:bg-none dark:xl:bg-[#FFFFFF0D] dark:xl:hover:bg-[#FFFFFF1A]"
-      aria-label="Toggle Theme"
+    <QuickTooltip
+      content={mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      side="bottom"
+      variant="default"
+      showArrow={true}
     >
-      <span className="flex-center transition-transform duration-300 ease-out group-active:scale-90 group-active:rotate-45">
-        {mode === 'dark' ? <RiSunFill size={24} color="#ffc107" /> : <RiContrast2Line size={24} color="#ffd45d" />}
-      </span>
-    </button>
+      <button
+        ref={buttonRef}
+        onClick={toggleMode}
+        className="flex-center group mr-14 h-20 w-19 rounded-none bg-none p-6 transition-all duration-150 ease-in-out focus:outline-none xl:mr-0 xl:bg-[#FFFFFF0D] xl:hover:bg-[#FFFFFF1A] dark:bg-none dark:xl:bg-[#FFFFFF0D] dark:xl:hover:bg-[#FFFFFF1A]"
+        aria-label="Toggle Theme"
+      >
+        <span className="flex-center transition-transform duration-300 ease-out group-active:scale-90 group-active:rotate-45">
+          {mode === 'dark' ? <RiSunFill size={24} color="#ffc107" /> : <RiContrast2Line size={24} color="#ffd45d" />}
+        </span>
+      </button>
+    </QuickTooltip>
   )
 }
 

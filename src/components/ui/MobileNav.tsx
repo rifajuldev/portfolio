@@ -1,4 +1,5 @@
 'use client'
+import { QuickTooltip } from '@/components/ui/tooltip'
 import { navItems, socialLinkList } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -65,14 +66,15 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
             <nav>
               <ul className="pl-0">
                 {navItems.map(({ label, route }) => {
-                  const isActive = activeHash === route
+                  const isRouteMatch = route.startsWith('/') ? pathname.startsWith(route) : activeHash === route
+                  const targetHref = route.startsWith('#') && pathname !== '/' ? `/${route}` : route
 
                   return (
                     <li className="relative mb-5 block p-0" key={route}>
                       <Link
-                        href={route}
+                        href={targetHref}
                         className={`inline-block rounded px-4 py-2 text-base leading-6.5 font-normal transition-all duration-300! ${
-                          isActive ? 'text-primary-2' : 'text-neutral-0 hover:text-primary-2'
+                          isRouteMatch ? 'text-primary-2' : 'text-neutral-0 hover:text-primary-2'
                         }`}
                         onClick={() => setIsMobileNavOpen(false)}
                       >
@@ -89,11 +91,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
         {/* Nav Body End */}
 
         <ul className="flex gap-6 px-7.5 text-white md:hidden">
-          {socialLinkList.map(({ id, link, icon: Icon }) => (
+          {socialLinkList.map(({ id, name, link, icon: Icon }) => (
             <li key={id}>
-              <Link href={link} className="hover:text-primary-2 flex items-center gap-2 transition" target="_blank">
-                <Icon size={22} className="text-xl" />
-              </Link>
+              <QuickTooltip content={name} side="top">
+                <Link href={link} className="hover:text-primary-2 flex items-center gap-2 transition" target="_blank">
+                  <Icon size={22} className="text-xl" />
+                </Link>
+              </QuickTooltip>
             </li>
           ))}
         </ul>

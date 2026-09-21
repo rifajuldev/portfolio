@@ -1,3 +1,4 @@
+import { QuickTooltip } from '@/components/ui/tooltip'
 import { contactList, socialLinkList } from '@/constants'
 import Link from 'next/link'
 import React from 'react'
@@ -12,7 +13,7 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div
-        className={`bg-neutral-1000 ease-custom-ease fixed top-0 left-0 z-50 h-full w-85 overflow-y-scroll p-7.5 transition-transform duration-300! ${
+        className={`bg-neutral-1000 ease-custom-ease fixed top-0 left-0 z-60 h-full w-85 overflow-y-scroll p-7.5 transition-transform duration-300! ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         style={{ scrollbarWidth: 'none' }}
@@ -63,16 +64,17 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
           <div>
             <p className="mb-2 text-[19px] text-neutral-400">Social Links</p>
             <div className="text-neutral-0 flex items-center gap-4">
-              {socialLinkList.map(({ id, link, icon: Icon }) => (
-                <Link
-                  key={id}
-                  className="hover:text-primary-2 transition-all duration-300"
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon size={18} className="text-xl" />
-                </Link>
+              {socialLinkList.map(({ id, name, link, icon: Icon }) => (
+                <QuickTooltip key={id} content={name} side="top">
+                  <Link
+                    className="hover:text-primary-2 transition-all duration-300"
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon size={18} className="text-xl" />
+                  </Link>
+                </QuickTooltip>
               ))}
             </div>
           </div>
@@ -83,7 +85,7 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
       {/* Offcanvas Overlay Start */}
       {isOpen && (
         <div
-          className="fixed top-0 left-0 z-40 h-full w-full bg-black opacity-70 transition-all duration-300!"
+          className="fixed top-0 left-0 z-50 h-full w-full bg-black opacity-70 transition-all duration-300!"
           onClick={() => setIsOpen(false)}
         ></div>
       )}

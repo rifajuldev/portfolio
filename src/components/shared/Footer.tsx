@@ -1,3 +1,4 @@
+import { QuickTooltip } from '@/components/ui/tooltip'
 import { navItems, socialLinkList } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,10 +27,12 @@ const Footer = () => {
           {/* Social Contacts List Start */}
           <div className="flex justify-center">
             <div className="text-neutral-0 flex items-center gap-4">
-              {socialLinkList.map(({ id, link, icon: Icon }) => (
-                <Link key={id} className="hover:text-primary-2 transition-all duration-300" href={link} target="_blank">
-                  <Icon size={18} className="text-xl" />
-                </Link>
+              {socialLinkList.map(({ id, name, link, icon: Icon }) => (
+                <QuickTooltip key={id} content={name} side="top">
+                  <Link className="hover:text-primary-2 transition-all duration-300" href={link} target="_blank">
+                    <Icon size={18} className="text-xl" />
+                  </Link>
+                </QuickTooltip>
               ))}
             </div>
           </div>

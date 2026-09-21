@@ -1,3 +1,4 @@
+import { QuickTooltip } from '@/components/ui/tooltip'
 import React from 'react'
 import { RiMenu2Fill } from 'react-icons/ri'
 
@@ -7,12 +8,15 @@ interface NavMenuProps {
 
 const NavMenu: React.FC<NavMenuProps> = ({ setIsOpen }) => {
   return (
-    <button
-      className="hidden h-20 w-[70px] items-center justify-center bg-[#FFFFFF0D] p-6 text-white md:flex lg:w-[76px]"
-      onClick={() => setIsOpen(true)}
-    >
-      <RiMenu2Fill size={24} className="leading-6" />
-    </button>
+    <QuickTooltip content="Open Quick Drawer" side="bottom">
+      <button
+        className="hidden h-20 w-17.5 items-center justify-center bg-[#FFFFFF0D] p-6 text-white hover:bg-[#FFFFFF1A] md:flex lg:w-19 dark:bg-[#FFFFFF0D] dark:hover:bg-[#FFFFFF1A]"
+        onClick={() => setIsOpen(true)}
+        aria-label="Open Quick Drawer"
+      >
+        <RiMenu2Fill size={24} className="leading-6" />
+      </button>
+    </QuickTooltip>
   )
 }
 

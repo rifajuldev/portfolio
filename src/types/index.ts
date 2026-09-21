@@ -1,123 +1,121 @@
-import { projectFormSchema } from '@/lib/validator'
-import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { IconType } from 'react-icons'
-import { z } from 'zod'
 
-export type ProjectFormData = z.infer<typeof projectFormSchema>
-
-export const projectDocumentSchema = projectFormSchema.extend({
-  _id: z.string().optional(),
-})
-export type ProjectDocument = z.infer<typeof projectDocumentSchema>
-
-export interface DropdownProps {
-  register: UseFormRegister<ProjectFormData>
-  setValue: UseFormSetValue<ProjectFormData>
-  errors?: FieldErrors<ProjectFormData>
-  setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>
-  selectedOptions: string[]
+export interface IHero {
+  headline: string
+  first_title: string
+  middle_title: string
+  hero_img_url: string
+  hero_pdf_url: string
+  last_title: string
+  desc: string
+  desc_highlighted_text: string
 }
 
-export interface ImageUploaderProps {
-  onFieldChange: (url: string) => void
-  fileUrl: string
-  setFiles: React.Dispatch<React.SetStateAction<File[]>>
-  errors?: FieldErrors<ProjectFormData>
+export interface ITechnology {
+  _id?: string
+  tech_name: string
+  tech_img_url: string
+  tech_official_url: string
+  show_in_hero: boolean
+  skill_position: string
 }
 
-// ====== PROJECT PARAMS ======
-export type CreateProjectParams = {
-  project: {
-    title: string
-    desc: string
-    client: string
-    completion_time: string
-    technologies: Array<string>
-    project_img_url: string
-    live_link: string
-    github_link: string
-  }
+export interface IProject {
+  _id: string
+  title: string
+  desc: string
+  client: string
+  completion_time: string
+  technologies: string[]
+  project_img_url: string
+  live_link: string
+  github_link: string
 }
 
-export type ProjectParams = {
-  project: {
-    _id: string
-    title: string
-    desc: string
-    client: string
-    completion_time: string
-    technologies: Array<string>
-    project_img_url: string
-    live_link: string
-    github_link: string
-  }
-}
-
-export type DeleteProjectParams = {
-  projectId: string
-}
-
-// ====== FORM TECHNOLOGY PARAMS ======
-export type CreateFormTechnologyParams = {
-  formTechnology: {
+export interface IBlog {
+  _id: string
+  tag: string
+  img_url: string
+  date: string | Date
+  read_time: string
+  title: string
+  desc: string
+  link?: string
+  content?: string
+  author?: {
     name: string
+    role: string
+    avatar: string
   }
+  key_takeaways?: string[]
 }
 
-// ====== TECHNOLOGY PARAMS ======
-export type CreateTechnologyParams = {
-  technology: {
-    tech_name: string
-    tech_img_url: string
-    tech_official_url: string
-    show_in_hero: boolean
-    skill_position: string
-  }
+export interface IMySkill {
+  front_end_technologies: string[]
+  back_end_technologies: string[]
+  database_technologies: string[]
+  tools_platform_technologies: string[]
+  others_technologies: string[]
 }
 
-export type TechnologyParams = {
-  technology: {
-    _id: string
-    tech_name: string
-    tech_img_url: string
-    tech_official_url: string
-    show_in_hero: boolean
-    skill_position: string
-  }
+export interface IEducation {
+  _id: string
+  start_date: string | Date
+  end_date?: string | Date
+  isPresent: boolean
+  institute: string
+  desc: string
 }
 
-export type DeleteTechnologyParams = {
-  technologyId: string
+export interface IGit {
+  _id: string
+  date: string | Date
+  title: string
 }
 
-// ====== BLOG PARAMS ======
-export type CreateBlogParams = {
-  blog: {
-    tag: string
-    img_url: string
-    date: Date
-    read_time: string
-    title: string
-    desc: string
-    link: string
-  }
+export interface IExperienceTitle {
+  first_title: string
+  second_title: string
+  third_title: string
+  fourth_title: string
 }
 
-export type BlogParams = {
-  blog: {
-    _id: string
-    tag: string
-    img_url: string
-    date: Date
-    read_time: string
-    title: string
-    desc: string
-    link: string
-  }
+export interface IExperience {
+  _id: string
+  company_name: string
+  company_logo_url: string
+  role: string
+  job_start_date: string | Date
+  job_end_date?: string | Date
+  isPresent: boolean
+  job_desc_list: Array<{ text: string; highlight?: string }>
+  experi_technologies: string[]
 }
 
-export type DeleteBlogParams = {
-  blogId: string
+export interface IService {
+  title: string
+  icon_name: string
+  desc: string
+  highlightText?: string
+}
+
+export interface ICooperationTitle {
+  first_title: string
+  second_title: string
+  third_title: string
+  fourth_title: string
+}
+
+export interface ICooperation {
+  company_name: string
+  logo_url: string
+  company_position: string
+}
+
+export interface IStatistics {
+  stats_title: string
+  icon_name: string
+  count: number
 }
 
 export interface CombinedContactData {
@@ -130,143 +128,7 @@ export interface CombinedContactData {
 
 export interface CombinedSocialContactData {
   id: number
+  name: string
   link: string
   icon: IconType
-}
-
-// ====== EDUCATION PARAMS ======
-export type CreateEducationParams = {
-  education: {
-    start_date: Date
-    end_date?: Date
-    isPresent: boolean
-    institute: string
-    desc: string
-  }
-}
-
-export type EducationParams = {
-  education: {
-    _id: string
-    start_date: Date
-    end_date?: Date
-    isPresent: boolean
-    institute: string
-    desc: string
-  }
-}
-
-export type DeleteEducationParams = {
-  educationId: string
-}
-
-// ====== GIT PARAMS ======
-export type CreateGitParams = {
-  git: {
-    title: string
-    date: Date
-  }
-}
-
-export type GitParams = {
-  git: {
-    _id: string
-    title: string
-    date: Date
-  }
-}
-
-export type DeleteGitParams = {
-  gitId: string
-}
-
-// ====== EXPERIENCE PARAMS ======
-export type CreateExperienceParams = {
-  experience: {
-    job_desc_list: Array<{ text: string; highlight?: string }>
-    experi_technologies: string[]
-    company_name: string
-    company_logo_url: string
-    role: string
-    job_start_date: Date
-    job_end_date?: Date
-    isPresent: boolean
-  }
-}
-
-export type ExperienceParams = {
-  experience: {
-    _id: string
-    job_desc_list: Array<{ text: string; highlight?: string }>
-    experi_technologies: string[]
-    company_name: string
-    company_logo_url: string
-    role: string
-    job_start_date: Date
-    job_end_date?: Date
-    isPresent: boolean
-  }
-}
-
-export type DeleteExperienceParams = {
-  experienceId: string
-}
-
-// ====== SERVICE PARAMS ======
-export type CreateServiceParams = {
-  service: {
-    title: string
-    desc: string
-    icon_name: string
-    highlightText?: string
-  }
-}
-
-export type ServiceParams = {
-  service: {
-    _id: string
-    title: string
-    desc: string
-    icon_name: string
-    highlightText?: string
-  }
-}
-
-export type DeleteServiceParams = {
-  serviceId: string
-}
-
-// ====== Cooperation PARAMS ======
-export type CreateCooperationParams = {
-  cooperation: {
-    company_name: string
-    logo_url: string
-    company_position: string
-  }
-}
-
-export type DeleteCooperationParams = {
-  cooperationId: string
-}
-
-// ====== STATISTICS PARAMS ======
-export type CreateStatsParams = {
-  stats: {
-    stats_title: string
-    icon_name: string
-    count: number
-  }
-}
-
-export type StatsParams = {
-  stats: {
-    _id: string
-    stats_title: string
-    icon_name: string
-    count: number
-  }
-}
-
-export type DeleteStatParams = {
-  statId: string
 }

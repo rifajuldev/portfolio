@@ -7,11 +7,16 @@ import ThemeToggle from './ThemeToggle'
 interface NavbarProps {
   setIsOffCanvasOpen: React.Dispatch<React.SetStateAction<boolean>>
   setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>> // mobile nav toggle prop
+  isScrolled?: boolean
 }
 
-const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen }) => {
+const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen, isScrolled }) => {
   return (
-    <nav className="border-border-1 dark:bg-bg-3 relative top-[22px] z-50 rounded-lg border bg-[#333a32]">
+    <nav
+      className={`border-border-1 dark:bg-bg-3 rounded-lg border bg-[#333a32] transition-all duration-300 ${
+        isScrolled ? 'dark:bg-bg-3/95 bg-[#333a32]/95 shadow-2xl backdrop-blur-md' : 'relative top-5.5'
+      }`}
+    >
       <div className="flex">
         {/* nav menu */}
         <div className="hidden md:block">

@@ -1,6 +1,4 @@
 @import 'tailwindcss';
-@import 'uploadthing/tw/v4';
-@source '../node_modules/@uploadthing/react/dist';
 
 :root {
   /* bg image */
@@ -688,5 +686,76 @@ Preloader
   }
   100% {
     clip-path: circle(var(--ripple-r, 2000px) at var(--ripple-x, 50%) var(--ripple-y, 50%));
+  }
+}
+
+/* Radix Tooltip Animations */
+.tooltip-content {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.tooltip-content[data-state='delayed-open'][data-side='top'],
+.tooltip-content[data-state='instant-open'][data-side='top'] {
+  animation-name: tooltip-show-top;
+}
+
+.tooltip-content[data-state='delayed-open'][data-side='bottom'],
+.tooltip-content[data-state='instant-open'][data-side='bottom'] {
+  animation-name: tooltip-show-bottom;
+}
+
+.tooltip-content[data-state='delayed-open'][data-side='left'],
+.tooltip-content[data-state='instant-open'][data-side='left'] {
+  animation-name: tooltip-show-left;
+}
+
+.tooltip-content[data-state='delayed-open'][data-side='right'],
+.tooltip-content[data-state='instant-open'][data-side='right'] {
+  animation-name: tooltip-show-right;
+}
+
+@keyframes tooltip-show-top {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tooltip-show-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tooltip-show-left {
+  from {
+    opacity: 0;
+    transform: translateX(4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes tooltip-show-right {
+  from {
+    opacity: 0;
+    transform: translateX(-4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }

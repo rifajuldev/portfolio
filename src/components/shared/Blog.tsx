@@ -10,15 +10,15 @@ const Blog = () => {
   const { blogs } = useAppContext()
 
   return (
-    <section id="blog" className="relative pb-[60px]">
+    <section id="blog" className="relative pb-15">
       {/* Section Heading Start */}
       <SectionHeading sectionName="Latest Posts" headings={[{ title: 'From Blog' }]} center={true} />
       {/* Section Heading End */}
 
       <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
         {blogs.length > 0 ? (
-          blogs.map(({ _id, tag, img_url, date, read_time, title, desc, link }) => (
-            <Link key={_id} href={link} className="blog-card group mb-4 rounded-t-md md:mb-8 lg:mb-4" target="_blank">
+          blogs.slice(0, 3).map(({ _id, tag, img_url, date, read_time, title, desc }) => (
+            <Link key={_id} href={`/blogs/${_id}`} className="blog-card group mb-4 rounded-t-md md:mb-8 lg:mb-4">
               {/* Card Image */}
               <div className="relative mb-6">
                 <div className="relative translate-z-0 transform overflow-hidden rounded-md">
@@ -75,6 +75,16 @@ const Blog = () => {
             ))}
           </>
         )}
+      </div>
+
+      {/* View All Blogs Button */}
+      <div className="mt-8 text-center md:mt-12">
+        <Link
+          href="/blogs"
+          className="bg-primary-2 hover:bg-primary-2/90 shadow-primary-2/20 inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold text-black shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          View All Blogs <RiArrowRightUpLine size={18} />
+        </Link>
       </div>
     </section>
   )
