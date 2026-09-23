@@ -88,7 +88,7 @@ const Hero = () => {
               {/* Hero Paragraph Start */}
               <div className="text-neutral-0 mb-8 text-[14px] md:text-base lg:mb-10">
                 <span className="text-secondary-2 inline-block">{'<p>'}</span>
-                <span className="inline-block" dangerouslySetInnerHTML={{ __html: highlightedDescription }} />
+                <span className="inline-block pl-2" dangerouslySetInnerHTML={{ __html: highlightedDescription }} />
                 <span className="text-secondary-2 inline-block">{'</p>'}</span>
               </div>
               {/* Hero Paragraph End */}
