@@ -1,6 +1,6 @@
 import { QuickTooltip } from '@/components/ui/tooltip'
 import { navItems, socialLinkList } from '@/constants'
-import Image from 'next/image'
+import Logo from '@/icons/logo'
 import Link from 'next/link'
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="text-center">
           {/* Footer Logo Start */}
           <Link href="/" aria-label="Home" className="flex-center mb-4 gap-2 bg-transparent text-white">
-            <Image src="/favicon.svg" width={36} height={36} alt="logo" />
+            <Logo className="h-7 w-7" />
             <span
               className="text-[23px] leading-normal font-medium"
               style={{

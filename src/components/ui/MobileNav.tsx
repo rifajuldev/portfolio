@@ -1,7 +1,7 @@
 'use client'
 import { QuickTooltip } from '@/components/ui/tooltip'
 import { navItems, socialLinkList } from '@/constants'
-import Image from 'next/image'
+import Logo from '@/icons/logo'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -41,7 +41,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
         <div className="flex-between relative mb-6.25 border-b border-neutral-200 px-6 py-5">
           {/* Mobile Nav Logo Start */}
           <Link href="/" className="inline-flex items-center">
-            <Image src="/favicon.svg" width={36} height={36} alt="logo" />
+            <Logo className="h-8 w-8" />
             <span className="fs-4 text-neutral-0 ml-2 text-[23px]">Rifajul.dev</span>
           </Link>
           {/* Mobile Nav Logo End */}
