@@ -1,6 +1,5 @@
 import { cooperationTitle } from '@/constants'
 import CooperationContacts from '../ui/CooperationContacts'
-import CooperationSlide from '../ui/CooperationSlide'
 import RotateAnimation from '../ui/RotateAnimation'
 import SectionAnimatedBorder from '../ui/SectionAnimatedBorder'
 import SectionHeading from '../ui/SectionHeading'
@@ -25,9 +24,7 @@ const Cooperation = () => {
               ]}
             />
 
-            <div className="border-border-1 mx-auto my-8 rounded-md border p-3 lg:w-3/4">
-              <CooperationSlide />
-            </div>
+            <div className="border-border-1 mx-auto my-8 rounded-md border p-3 lg:w-3/4"></div>
 
             <CooperationContacts />
           </div>

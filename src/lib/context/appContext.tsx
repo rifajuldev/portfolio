@@ -2,7 +2,6 @@
 import {
   blogs as staticBlogs,
   cooperationAvatarUrl as staticCooperationAvatarUrl,
-  cooperations as staticCooperations,
   cooperationTitle as staticCooperationTitle,
   educations as staticEducations,
   experiences as staticExperiences,
@@ -17,7 +16,6 @@ import {
 } from '@/constants'
 import {
   IBlog,
-  ICooperation,
   ICooperationTitle,
   IEducation,
   IExperience,
@@ -44,7 +42,6 @@ interface AppContextProps {
   experiences: IExperience[]
   services: IService[]
   cooperationTitle: ICooperationTitle
-  cooperations: ICooperation[]
   cooperationAvatar: string
   statistics: IStatistics[]
 }
@@ -61,7 +58,6 @@ const AppContext = createContext<AppContextProps>({
   experiences: staticExperiences as IExperience[],
   services: staticServices as IService[],
   cooperationTitle: staticCooperationTitle as ICooperationTitle,
-  cooperations: staticCooperations as ICooperation[],
   cooperationAvatar: staticCooperationAvatarUrl,
   statistics: staticStatistics as IStatistics[],
 })
@@ -81,7 +77,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         experiences: staticExperiences as IExperience[],
         services: staticServices as IService[],
         cooperationTitle: staticCooperationTitle as ICooperationTitle,
-        cooperations: staticCooperations as ICooperation[],
         cooperationAvatar: staticCooperationAvatarUrl,
         statistics: staticStatistics as IStatistics[],
       }}

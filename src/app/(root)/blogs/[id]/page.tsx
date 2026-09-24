@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/ui/ScrollToTop'
 import { blogs } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -46,12 +47,15 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
   }).format(new Date(blog.date))
 
   return (
-    <article className="py-10 md:py-16">
+    <article className="pt-4 pb-10 md:pt-6 md:pb-16">
+      {/* Scroll to top on navigation */}
+      <ScrollToTop />
+
       {/* Top Navigation & Breadcrumbs */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-neutral-800 pb-6">
+      <div className="border-border-1 mb-8 flex flex-wrap items-center justify-between gap-4 border-b pb-6">
         <Link
           href="/blogs"
-          className="border-border-1 hover:border-primary-2 hover:text-primary-2 inline-flex items-center gap-2 rounded-lg border bg-neutral-900/60 px-4 py-2 text-sm font-medium text-neutral-300 transition"
+          className="border-border-1 bg-bg-3 hover:border-primary-2 hover:text-primary-2 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium text-neutral-300 transition"
         >
           <RiArrowLeftLine size={18} /> Back to Blogs
         </Link>
@@ -65,7 +69,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
             Blogs
           </Link>
           <span>/</span>
-          <span className="max-w-50 truncate text-white sm:max-w-xs">{blog.title}</span>
+          <span className="text-neutral-0 max-w-50 truncate sm:max-w-xs">{blog.title}</span>
         </nav>
       </div>
 
@@ -78,24 +82,24 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
           <span className="flex items-center gap-1 text-xs text-neutral-400">
             <RiCalendarLine size={14} /> {formattedDate}
           </span>
-          <span className="text-neutral-600">•</span>
+          <span className="text-neutral-500">•</span>
           <span className="flex items-center gap-1 text-xs text-neutral-400">
             <RiTimeLine size={14} /> {blog.read_time} read
           </span>
         </div>
 
-        <h1 className="mb-6 text-2xl leading-tight font-bold text-white md:text-4xl lg:text-5xl">{blog.title}</h1>
+        <h1 className="text-neutral-0 mb-6 text-2xl leading-tight font-bold md:text-4xl lg:text-5xl">{blog.title}</h1>
 
         <p className="text-lg leading-relaxed text-neutral-300 md:text-xl">{blog.desc}</p>
 
         {/* Author Metadata */}
         {blog.author && (
-          <div className="border-border-1 mt-8 flex items-center gap-4 rounded-xl border bg-neutral-900/40 p-4 backdrop-blur-sm">
-            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-neutral-700">
+          <div className="border-border-1 bg-bg-3 mt-8 flex items-center gap-4 rounded-xl border p-4">
+            <div className="border-border-1 relative h-12 w-12 overflow-hidden rounded-full border">
               <Image src={blog.author.avatar} alt={blog.author.name} fill className="object-cover" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">{blog.author.name}</h4>
+              <h4 className="text-neutral-0 text-sm font-semibold">{blog.author.name}</h4>
               <p className="text-xs text-neutral-400">{blog.author.role}</p>
             </div>
           </div>
@@ -103,7 +107,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
       </header>
 
       {/* Featured Banner Image */}
-      <div className="border-border-1 relative mb-12 overflow-hidden rounded-2xl border bg-neutral-900 shadow-2xl">
+      <div className="border-border-1 bg-bg-3 relative mb-12 overflow-hidden rounded-2xl border shadow-2xl">
         <div className="relative aspect-video w-full">
           <Image src={blog.img_url} alt={blog.title} fill className="object-cover" priority />
         </div>
@@ -134,7 +138,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
           blog.content.split('\n\n').map((paragraph, idx) => {
             if (paragraph.startsWith('### ')) {
               return (
-                <h3 key={idx} className="mt-8 mb-4 text-xl font-bold text-white md:text-2xl">
+                <h3 key={idx} className="text-neutral-0 mt-8 mb-4 text-xl font-bold md:text-2xl">
                   {paragraph.replace('### ', '')}
                 </h3>
               )
@@ -144,7 +148,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
               return (
                 <pre
                   key={idx}
-                  className="border-border-1 my-6 overflow-x-auto rounded-xl border bg-neutral-950 p-4 font-mono text-sm text-neutral-200"
+                  className="border-border-1 bg-bg-4 my-6 overflow-x-auto rounded-xl border p-4 font-mono text-sm text-neutral-200"
                 >
                   <code>{codeContent}</code>
                 </pre>
@@ -176,7 +180,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=https://rifajul.dev/blogs/${blog._id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="border-border-1 hover:border-primary-2 hover:text-primary-2 flex h-9 w-9 items-center justify-center rounded-lg border bg-neutral-900 text-neutral-300 transition"
+            className="border-border-1 bg-bg-3 hover:border-primary-2 hover:text-primary-2 flex h-9 w-9 items-center justify-center rounded-lg border text-neutral-400 transition"
             aria-label="Share on X (Twitter)"
           >
             <RiTwitterXFill size={16} />
@@ -185,7 +189,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
             href={`https://www.linkedin.com/sharing/share-offsite/?url=https://rifajul.dev/blogs/${blog._id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="border-border-1 hover:border-primary-2 hover:text-primary-2 flex h-9 w-9 items-center justify-center rounded-lg border bg-neutral-900 text-neutral-300 transition"
+            className="border-border-1 bg-bg-3 hover:border-primary-2 hover:text-primary-2 flex h-9 w-9 items-center justify-center rounded-lg border text-neutral-400 transition"
             aria-label="Share on LinkedIn"
           >
             <RiLinkedinFill size={16} />
@@ -196,13 +200,13 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
       {/* Related Articles Section */}
       {relatedBlogs.length > 0 && (
         <section className="mt-16">
-          <h2 className="mb-8 text-2xl font-bold text-white">Related Articles</h2>
+          <h2 className="text-neutral-0 mb-8 text-2xl font-bold">Related Articles</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedBlogs.map((rel) => (
               <Link
                 key={rel._id}
                 href={`/blogs/${rel._id}`}
-                className="blog-card group border-border-1 hover:border-primary-2/40 flex flex-col overflow-hidden rounded-xl border bg-neutral-900/40 p-4 transition-all duration-300 hover:-translate-y-1"
+                className="blog-card group border-border-1 bg-bg-3 flex flex-col overflow-hidden rounded-xl border p-4 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative mb-3 aspect-video overflow-hidden rounded-lg">
                   <Image
@@ -211,15 +215,29 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <span className="text-primary-2 absolute top-2 left-2 rounded bg-neutral-950/90 px-2 py-0.5 text-[10px] font-semibold">
+                  <span className="bg-bg-4 border-border-1 absolute top-2 left-2 rounded border px-2 py-0.5 text-[10px] font-semibold text-neutral-300">
                     {rel.tag}
                   </span>
+
+                  {/* Hover Icon Badge — dual animated */}
+                  <div className="bg-primary-2 absolute top-1/2 left-1/2 inline-flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-center align-middle leading-9 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <span className="relative inline-block">
+                      <RiArrowRightUpLine
+                        size={18}
+                        className="group-hover:animate-hover-icon-exit absolute text-black transition-transform duration-500 ease-in-out"
+                      />
+                      <RiArrowRightUpLine
+                        size={18}
+                        className="group-hover:animate-hover-icon-enter text-black transition-transform duration-500 ease-in-out"
+                      />
+                    </span>
+                  </div>
                 </div>
-                <h4 className="group-hover:text-primary-2 line-clamp-2 text-sm font-semibold text-white transition-colors">
+                <h4 className="text-neutral-0 group-hover:text-primary-2 line-clamp-2 text-sm font-semibold transition-colors">
                   {rel.title}
                 </h4>
                 <p className="mt-1 line-clamp-2 text-xs text-neutral-400">{rel.desc}</p>
-                <div className="text-primary-2 mt-3 flex items-center text-xs font-medium">
+                <div className="group-hover:text-primary-2 mt-3 flex items-center text-xs font-medium text-neutral-400 transition-colors duration-200">
                   Read More <RiArrowRightUpLine className="ml-0.5" size={14} />
                 </div>
               </Link>

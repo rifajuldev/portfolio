@@ -1,7 +1,9 @@
 'use client'
 import { technologies } from '@/constants'
+import Image from 'next/image'
 import Link from 'next/link'
 import Marquee from 'react-fast-marquee'
+import { QuickTooltip } from './tooltip'
 
 const topTechs = technologies.filter((skill) => skill.skill_position === 'Top')
 const bottomTechs = technologies.filter((skill) => skill.skill_position === 'Bottom')
@@ -14,14 +16,16 @@ const MySkillsSlide = () => {
         <ul className="flex overflow-hidden p-0">
           <Marquee pauseOnHover={true} speed={60} direction="right">
             {topTechs.map(({ tech_name, tech_img_url, tech_official_url }) => (
-              <li key={tech_name} className="float-right mx-3.75 text-center" title={tech_name}>
-                <Link
-                  href={tech_official_url}
-                  target="_blank"
-                  className="border-border-1 hover:text-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 hover:border-none hover:bg-[#242424] hover:transition-all hover:duration-300 hover:ease-in-out sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:border-0! dark:hover:bg-[#242424]"
-                >
-                  <img src={tech_img_url} alt={tech_name} className="h-auto w-auto" />
-                </Link>
+              <li key={tech_name} className="float-right mx-3.75 text-center">
+                <QuickTooltip content={tech_name} side="top" variant="glass" size="sm" showArrow={true}>
+                  <Link
+                    href={tech_official_url}
+                    target="_blank"
+                    className="border-border-1 hover:text-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 hover:border-none hover:bg-[#242424] hover:transition-all hover:duration-300 hover:ease-in-out sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:border-0! dark:hover:bg-[#242424]"
+                  >
+                    <Image src={tech_img_url} alt={tech_name} className="h-auto w-auto" width={70} height={70} />
+                  </Link>
+                </QuickTooltip>
               </li>
             ))}
           </Marquee>
@@ -33,14 +37,16 @@ const MySkillsSlide = () => {
         <ul className="flex overflow-hidden p-0">
           <Marquee pauseOnHover={true} speed={60} direction="left">
             {bottomTechs.map(({ tech_name, tech_img_url, tech_official_url }) => (
-              <li key={tech_name} className="float-left mx-3.75 text-center" title={tech_name}>
-                <Link
-                  href={tech_official_url}
-                  target="_blank"
-                  className="border-border-1 hover:text-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 hover:border-none hover:bg-[#242424] hover:transition-all hover:duration-300 hover:ease-in-out sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:border-0! dark:hover:bg-[#242424]"
-                >
-                  <img src={tech_img_url} alt={tech_name} className="h-auto w-auto" />
-                </Link>
+              <li key={tech_name} className="float-left mx-3.75 text-center">
+                <QuickTooltip content={tech_name} side="top" variant="glass" size="sm" showArrow={true}>
+                  <Link
+                    href={tech_official_url}
+                    target="_blank"
+                    className="border-border-1 hover:text-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 hover:border-none hover:bg-[#242424] hover:transition-all hover:duration-300 hover:ease-in-out sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:border-0! dark:hover:bg-[#242424]"
+                  >
+                    <Image src={tech_img_url} alt={tech_name} className="h-auto w-auto" width={70} height={70} />
+                  </Link>
+                </QuickTooltip>
               </li>
             ))}
           </Marquee>

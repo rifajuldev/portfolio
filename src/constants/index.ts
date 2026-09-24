@@ -133,8 +133,8 @@ export const hero = {
   headline: "Hey, I'm Rifajul",
   first_title: '',
   middle_title: 'Full Stack',
-  last_title: 'Web & App developer',
-  desc: 'With 2+ years of expertise in cutting-edge technologies such as NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB and MySql... I deliver web & app solutions that are both innovative and robust.',
+  last_title: 'Web & App Developer',
+  desc: 'With 2+ years of experience and completed over 30+ projects in cutting-edge technologies such as NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB and MySql... I deliver web & app solutions that are both innovative and robust.',
   desc_highlighted_text: 'NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB, MySql',
   hero_img_url: '/hero/hero-self-portrait.png',
   hero_pdf_url: 'https://utfs.io/f/NA8LFvDghE1xMk9oEFicB9Osg0Q7JyWhPAjtnxfrdZo8GvSq',
@@ -832,49 +832,6 @@ export const cooperationDefaultValues = {
   logo_url: '',
   company_position: '',
 }
-
-export const cooperations = [
-  {
-    company_name: 'Google',
-    logo_url: '/cooperation/brands/google.svg',
-    company_position: 'Top',
-  },
-  {
-    company_name: 'Samsung',
-    logo_url: '/cooperation/brands/samsung.svg',
-    company_position: 'Top',
-  },
-  {
-    company_name: 'Stripe',
-    logo_url: '/cooperation/brands/stripe.svg',
-    company_position: 'Top',
-  },
-  {
-    company_name: 'Monzo',
-    logo_url: '/cooperation/brands/monzo.svg',
-    company_position: 'Top',
-  },
-  {
-    company_name: 'GoCardless',
-    logo_url: '/cooperation/brands/gocardless.svg',
-    company_position: 'Bottom',
-  },
-  {
-    company_name: 'Intercom',
-    logo_url: '/cooperation/brands/intercom.svg',
-    company_position: 'Bottom',
-  },
-  {
-    company_name: 'Spotify',
-    logo_url: '/cooperation/brands/spotify.svg',
-    company_position: 'Bottom',
-  },
-  {
-    company_name: 'Bravado',
-    logo_url: '/cooperation/brands/bravodo.svg',
-    company_position: 'Bottom',
-  },
-]
 
 export const cooperationAvatarUrl = '/avatar.png'
 

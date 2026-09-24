@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <>
       <About />
-      <MySkills />
       <Cooperation />
       <Services />
+      <MySkills />
       <Experience />
       <Education />
       <Projects />

@@ -78,12 +78,22 @@ const Blog = () => {
       </div>
 
       {/* View All Blogs Button */}
-      <div className="mt-8 text-center md:mt-12">
+      <div className="mt-4 text-center md:mt-8">
         <Link
           href="/blogs"
-          className="bg-primary-2 hover:bg-primary-2/90 shadow-primary-2/20 inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold text-black shadow-lg transition-all duration-300 hover:scale-105"
+          className="group text-neutral-1000 bg-primary-2 font-secondary mt-4 inline-flex items-center gap-2 overflow-hidden rounded-full px-8 py-3 text-center text-[14px] leading-3.5 font-bold transition-all duration-300 ease-in-out md:px-10 md:py-4"
         >
-          View All Blogs <RiArrowRightUpLine size={18} />
+          View All Blogs
+          <span className="relative inline-block">
+            <RiArrowRightUpLine
+              size={20}
+              className="group-hover:animate-hover-icon-exit absolute w-5 transition-transform duration-400 ease-in-out"
+            />
+            <RiArrowRightUpLine
+              size={20}
+              className="group-hover:animate-hover-icon-enter w-5 transition-transform duration-400 ease-in-out"
+            />
+          </span>
         </Link>
       </div>
     </section>
