@@ -1,4 +1,8 @@
-import { hero, heroTechnologies } from '@/constants'
+'use client'
+
+import { hero as staticHero, heroTechnologies as staticHeroTechnologies } from '@/constants'
+import HeroShape from '@/icons/hero-shape'
+import { useAppContext } from '@/lib/context/appContext'
 import Image from 'next/image'
 import Link from 'next/link'
 import { RiDownloadLine } from 'react-icons/ri'
@@ -25,9 +29,15 @@ const getHighlightedDescription = (desc: string, highlightedText?: string) => {
   return desc.replace(regex, '<span class="text-secondary-2">$1</span>')
 }
 
-const highlightedDescription = getHighlightedDescription(hero.desc, hero.desc_highlighted_text)
-
 const Hero = () => {
+  const { hero: contextHero, technologies: contextTechnologies } = useAppContext()
+
+  const hero = contextHero || staticHero
+  const heroTechs = contextTechnologies?.filter((t) => t.show_in_hero)
+  const technologies = heroTechs && heroTechs.length > 0 ? heroTechs : staticHeroTechnologies
+
+  const highlightedDescription = getHighlightedDescription(hero.desc, hero.desc_highlighted_text)
+
   return (
     <section id="about" className="pb-4">
       <SectionAnimatedBorder>
@@ -45,13 +55,7 @@ const Hero = () => {
               />
 
               <div className="absolute -bottom-10 md:-bottom-12">
-                <Image
-                  src="/hero/icon.svg"
-                  width={75}
-                  height={68}
-                  alt="rifajul"
-                  className="h-auto w-14 md:w-16 lg:w-18"
-                />
+                <HeroShape className="h-14 w-14 md:h-16 md:w-16 lg:h-18 lg:w-18" />
               </div>
             </div>
           </div>
@@ -94,7 +98,7 @@ const Hero = () => {
               {/* Hero Paragraph End */}
 
               {/* Carousel Start */}
-              <HeroCarouselScroll technologies={heroTechnologies} />
+              <HeroCarouselScroll technologies={technologies} />
               {/* Carousel End */}
 
               {/* Resume Download Start */}

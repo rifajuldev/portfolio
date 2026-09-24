@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <>
       <About />
-      <Statistics />
       <Cooperation />
       <Services />
       <Experience />
       <Education />
       <Projects />
       <MySkills />
+      <Statistics />
       <Blog />
       <Contact />
     </>
