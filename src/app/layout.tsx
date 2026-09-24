@@ -1,14 +1,14 @@
 import { AppProvider } from '@/lib/context/appContext'
 import type { Metadata } from 'next'
 import { StrictMode } from 'react'
-import { Toaster } from 'react-hot-toast'
 import { SkeletonTheme } from 'react-loading-skeleton'
+import { Toaster } from 'sonner'
 import { dmMono, urbanist } from './font'
 import './globals.css'
 
 /* portfolio's title */
 export const metadata: Metadata = {
-  title: 'Md Rifajul Islam - Frontend Web Developer',
+  title: 'Md Rifajul Islam - Full Stack Developer',
   description: 'Modern and minimalistic portfolio',
   icons: {
     icon: '/favicon.svg',
@@ -44,7 +44,7 @@ export default function RootLayout({
             <AppProvider>{children}</AppProvider>
           </SkeletonTheme>
         </StrictMode>
-        <Toaster position="top-center" reverseOrder={false} />
+        <Toaster position="top-center" duration={10000} />
       </body>
     </html>
   )

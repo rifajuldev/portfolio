@@ -1,10 +1,10 @@
 'use client'
-import { contactInfo } from '@/constants'
+import { sendContactEmail } from '@/lib/actions/contact'
 import { contactFormSchema } from '@/lib/validator'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { RiArrowRightUpLine } from 'react-icons/ri'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const ContactForm = () => {
@@ -17,20 +17,20 @@ const ContactForm = () => {
     resolver: zodResolver(contactFormSchema),
   })
 
-  function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    try {
-      const mailtoUrl = `mailto:${contactInfo.email}?subject=${encodeURIComponent(
-        values.subject
-      )}&body=${encodeURIComponent(
-        `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone || 'N/A'}\n\nMessage:\n${values.message}`
-      )}`
+  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    const result = await sendContactEmail({
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      subject: values.subject,
+      message: values.message,
+    })
 
-      window.open(mailtoUrl, '_blank')
+    if (result.success) {
       reset()
-      toast.success('Mail client opened! Message draft created.')
-    } catch (error) {
-      console.error('Error handling contact form:', error)
-      toast.error('Failed to open mail client. Please send email manually.')
+      toast.success("Message sent! I'll get back to you soon.")
+    } else {
+      toast.error(result.error ?? 'Failed to send message. Please try again.')
     }
   }
 
