@@ -44,15 +44,30 @@ const HeroCarouselScroll = ({ technologies = heroTechnologies, isLoading = false
           ) : (
             <ul className="my-2.5 flex overflow-hidden p-0">
               <Marquee pauseOnHover={true} speed={75}>
-                {technologies.map(({ tech_name, tech_img_url, tech_official_url }) => (
+                {technologies.map(({ tech_name, tech_img_url, tech_img_white_url, tech_official_url }) => (
                   <li key={tech_name} className="mx-2.5 text-center">
                     <QuickTooltip content={tech_name} side="top">
                       <Link
                         href={tech_official_url}
-                        className="border-border-1 hover:text-primary-2 inline-flex h-15 w-15 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-15 hover:border-none hover:bg-[#242424] hover:transition-all hover:duration-300 hover:ease-in-out dark:bg-neutral-800 dark:hover:border-0! dark:hover:bg-[#242424]"
+                        className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-15 w-15 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-15 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md dark:bg-neutral-800 dark:hover:bg-[#242424]"
                         target="_blank"
                       >
-                        <Image src={tech_img_url} alt={tech_name} className="h-auto w-auto" width={60} height={60} />
+                        <Image
+                          src={tech_img_url}
+                          alt={tech_name}
+                          className={`h-auto w-auto ${tech_img_white_url ? 'dark:hidden' : ''}`}
+                          width={60}
+                          height={60}
+                        />
+                        {tech_img_white_url && (
+                          <Image
+                            src={tech_img_white_url}
+                            alt={tech_name}
+                            className="hidden h-auto w-auto dark:block"
+                            width={60}
+                            height={60}
+                          />
+                        )}
                       </Link>
                     </QuickTooltip>
                   </li>

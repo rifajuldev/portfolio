@@ -7,7 +7,7 @@ const filteredSkills = Object.entries(mySkills)
 
 const MySkills = () => {
   return (
-    <section id="skills" className="pb-15">
+    <section id="skills" className="mb-8">
       <div className="bg-bg-3 border-border-1 relative overflow-hidden rounded-lg border">
         <div className="relative z-40 py-15">
           <div className="relative z-20">

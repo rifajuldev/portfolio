@@ -6,9 +6,12 @@ import { RiContrast2Line, RiSunFill } from 'react-icons/ri'
 
 const ThemeToggle = () => {
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const [mode, setMode] = useState(() => {
-    if (typeof window === 'undefined') return 'dark'
-    return localStorage.getItem('theme') || 'dark'
+  const [mode, setMode] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
+      if (savedTheme) return savedTheme
+    }
+    return 'dark'
   })
 
   const toggleMode = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -39,7 +39,7 @@ const Hero = () => {
   const highlightedDescription = getHighlightedDescription(hero.desc, hero.desc_highlighted_text)
 
   return (
-    <section id="about" className="pb-4">
+    <section id="about" className="mb-8">
       <SectionAnimatedBorder>
         <div className="flex flex-wrap items-center py-12 md:py-15">
           {/* Hero Left Start */}

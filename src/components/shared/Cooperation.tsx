@@ -11,7 +11,7 @@ const Cooperation = () => {
         <SectionAnimatedBorder>
           <div className="p-4 md:p-10 lg:p-16">
             <SectionHeading
-              sectionName="Cooperation"
+              sectionName="Connect With Me"
               headings={[
                 {
                   title: cooperationTitle.first_title,
@@ -23,8 +23,6 @@ const Cooperation = () => {
                 },
               ]}
             />
-
-            <div className="border-border-1 mx-auto my-8 rounded-md border p-3 lg:w-3/4"></div>
 
             <CooperationContacts />
           </div>

@@ -7,19 +7,17 @@ import About from '@/components/shared/Hero'
 import MySkills from '@/components/shared/MySkills'
 import Projects from '@/components/shared/Projects'
 import Services from '@/components/shared/Services'
-import Statistics from '@/components/shared/Statistics'
 
 export default function Home() {
   return (
     <>
       <About />
       <Cooperation />
-      <Services />
-      <MySkills />
       <Experience />
+      <MySkills />
+      <Services />
       <Education />
       <Projects />
-      <Statistics />
       <Blog />
       <Contact />
     </>

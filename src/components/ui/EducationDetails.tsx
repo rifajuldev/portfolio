@@ -33,7 +33,7 @@ const EducationDetails = () => {
             )
           })}
         </ul>
-        <div className="border-border-1 absolute top-[10px] left-[4.5px] z-0 h-[80%] border-l lg:top-[13px] lg:left-[5px]"></div>
+        <div className="border-border-1 absolute top-2.5 left-[4.5px] z-0 h-[80%] border-l lg:top-3.25 lg:left-1.25"></div>
       </div>
 
       {/* Overly */}

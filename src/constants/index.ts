@@ -68,7 +68,7 @@ export const skillDisplayNames: { [key: string]: string } = {
   front_end_technologies: 'Front-End',
   back_end_technologies: 'Back-End',
   database_technologies: 'Databases',
-  tools_platform_technologies: 'Tools & Platforms',
+  tools_platform_technologies: 'Tools',
   others_technologies: 'Others',
 }
 
@@ -133,8 +133,8 @@ export const hero = {
   headline: "Hey, I'm Rifajul",
   first_title: '',
   middle_title: 'Full Stack',
-  last_title: 'Web & App Developer',
-  desc: 'With 2+ years of experience and completed over 30+ projects in cutting-edge technologies such as NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB and MySql... I deliver web & app solutions that are both innovative and robust.',
+  last_title: 'Web & Mobile Developer',
+  desc: 'With 2+ years of experience and completed over 30+ projects in cutting-edge technologies such as NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB and MySql... I deliver web & app solutions that are innovative, reliable, robust and production-ready.',
   desc_highlighted_text: 'NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB, MySql',
   hero_img_url: '/hero/hero-self-portrait.png',
   hero_pdf_url: 'https://utfs.io/f/NA8LFvDghE1xMk9oEFicB9Osg0Q7JyWhPAjtnxfrdZo8GvSq',
@@ -158,7 +158,7 @@ export const technologies = [
   {
     tech_name: 'TypeScript',
     tech_img_url: '/technologies/typescript.svg',
-    tech_official_url: 'https://www.typescriptlang.org/',
+    tech_official_url: 'https://www.typescriptlang.org',
     show_in_hero: true,
     skill_position: 'Bottom',
   },
@@ -172,7 +172,7 @@ export const technologies = [
   {
     tech_name: 'ExpressJS',
     tech_img_url: '/technologies/expressjs.svg',
-    tech_official_url: 'https://expressjs.com/',
+    tech_official_url: 'https://expressjs.com',
     show_in_hero: true,
     skill_position: 'Bottom',
   },
@@ -200,37 +200,59 @@ export const technologies = [
   {
     tech_name: 'Redux & Redux Toolkit',
     tech_img_url: '/technologies/redux.svg',
-    tech_official_url: 'https://redux.js.org/',
+    tech_official_url: 'https://redux.js.org',
     show_in_hero: true,
     skill_position: 'Top',
   },
   {
     tech_name: 'Bootstrap',
     tech_img_url: '/technologies/bootstrap.svg',
-    tech_official_url: 'https://getbootstrap.com/',
+    tech_official_url: 'https://getbootstrap.com',
     show_in_hero: true,
     skill_position: 'Top',
   },
   {
     tech_name: 'HTML',
     tech_img_url: '/technologies/html.svg',
-    tech_official_url: 'https://html.com/',
+    tech_official_url: 'https://html.com',
     show_in_hero: false,
     skill_position: 'Top',
   },
   {
     tech_name: 'CSS',
     tech_img_url: '/technologies/css.svg',
-    tech_official_url: 'https://www.w3.org/TR/CSS/',
+    tech_official_url: 'https://www.w3.org/TR/CSS',
     show_in_hero: false,
     skill_position: 'Top',
   },
   {
     tech_name: 'JavaScript',
     tech_img_url: '/technologies/javascript.svg',
-    tech_official_url: 'https://www.javascript.com/',
+    tech_official_url: 'https://www.javascript.com',
     show_in_hero: false,
     skill_position: 'Bottom',
+  },
+  {
+    tech_name: 'React Native',
+    tech_img_url: '/technologies/react_native.svg',
+    tech_official_url: 'https://reactnative.dev',
+    show_in_hero: false,
+    skill_position: 'Bottom',
+  },
+  {
+    tech_name: 'Expo',
+    tech_img_url: '/technologies/expo.svg',
+    tech_official_url: 'https://expo.dev',
+    show_in_hero: true,
+    skill_position: 'Top',
+  },
+  {
+    tech_name: 'GSAP',
+    tech_img_url: '/technologies/gsap-black.svg',
+    tech_img_white_url: '/technologies/gsap.svg',
+    tech_official_url: 'https://gsap.com',
+    show_in_hero: true,
+    skill_position: 'Top',
   },
 ]
 
@@ -626,28 +648,41 @@ Never store sensitive JWT access or refresh tokens in local storage, as maliciou
   },
 ]
 
-export const contactDefaultValues = {
-  name: '',
-  email: '',
-  phone: '',
-  subject: '',
-  message: '',
-}
-
-export const mySkillDefaultValues = {
-  front_end_technologies: [],
-  back_end_technologies: [],
-  database_technologies: [],
-  tools_platform_technologies: [],
-  others_technologies: [],
-}
-
 export const mySkills = {
-  front_end_technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React', 'NextJS'],
-  back_end_technologies: ['Node.js', 'Express'],
-  database_technologies: ['MongoDB', 'Mongoose'],
-  tools_platform_technologies: ['Git', 'Github'],
-  others_technologies: ['RESTful APIs'],
+  front_end_technologies: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'Bootstrap',
+    'Tailwind',
+    'React',
+    'NextJS',
+    'React Native',
+    'Expo',
+    'Redux Toolkit',
+    'GSAP',
+    'Framer Motion',
+    'Flutter',
+    'Modern UI Library',
+  ],
+  back_end_technologies: ['Node.js', 'Express.js', 'Nest.js', 'Fast API', 'WebSockets', 'Firebase', 'Redis'],
+
+  database_technologies: ['MongoDB', 'Mongoose', 'Prisma', 'SQL', 'MySql', 'PostgreSQL'],
+  tools_platform_technologies: [
+    'Git',
+    'Github',
+    'Docker',
+    'CI/CD',
+    'Nginx/Apache',
+    'Vitest',
+    'Jest',
+    'Stripe',
+    'Postman',
+    'Swagger',
+    'Linux VPS',
+  ],
+  others_technologies: ['Teamwork', 'Attention to Detail', 'Punctuality'],
 }
 
 export const educationDefaultValues = {
@@ -664,7 +699,7 @@ export const educations = [
     start_date: '2024-01-01T09:16:43.000Z',
     end_date: undefined as string | undefined,
     isPresent: true,
-    institute: 'Govt. BL College, Khulna',
+    institute: 'Govt. Brajalal (BL) College, Khulna',
     desc: "Bachelor's in Mathematics",
   },
   {
@@ -821,10 +856,10 @@ export const cooperationTitleDefaultValues = {
 }
 
 export const cooperationTitle = {
-  first_title: 'More than +168',
-  second_title: 'companies',
-  third_title: 'trusted ',
-  fourth_title: 'worldwide_',
+  first_title: 'Have an idea or want to',
+  second_title: 'collaborate?',
+  third_title: "Let's connect and build",
+  fourth_title: 'together_',
 }
 
 export const cooperationDefaultValues = {
@@ -840,26 +875,3 @@ export const statisticsDefaultValues = {
   icon_name: '',
   count: 0,
 }
-
-export const statistics = [
-  {
-    stats_title: 'Projects Completed',
-    icon_name: 'RiComputerLine',
-    count: 5,
-  },
-  {
-    stats_title: 'Years Experience',
-    icon_name: 'RiShapeLine',
-    count: 2,
-  },
-  {
-    stats_title: 'Satisfied Clients',
-    icon_name: 'RiServiceLine',
-    count: 0,
-  },
-  {
-    stats_title: 'Awards Winner',
-    icon_name: 'RiAwardLine',
-    count: 0,
-  },
-]

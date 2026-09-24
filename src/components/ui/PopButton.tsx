@@ -1,29 +1,66 @@
 import { cn } from '@/lib/cn'
+import Link from 'next/link'
+import React from 'react'
 
-interface PopButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface PopButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
+  href?: string
+  target?: string
+  rel?: string
+  download?: boolean | string
+  variant?: 'default' | 'icon'
+  className?: string
 }
 
-const PopButton = ({ children, className, ...props }: PopButtonProps) => {
-  return (
-    <button
-      className={cn(
-        'group relative inline-flex items-center justify-center font-semibold text-[#382b22] uppercase dark:text-[#382b22]',
-        'rounded-xl border-2 border-[#b18597] bg-[#fff0f0] px-8 py-5',
-        'transition-all duration-150 ease-[cubic-bezier(0,0,0.58,1)]',
-        'shadow-[0_12px_0_-2px_#f9c4d2,0_12px_0_0_#b18597,0_22px_0_0_#ffe3e2]',
-        'dark:shadow-[0_12px_0_-2px_#f9c4d2,0_12px_0_0_#b18597,0_22px_15px_-5px_rgba(0,0,0,0.3)]',
-        'hover:translate-y-1 hover:bg-[#ffe9e9] hover:shadow-[0_8px_0_-2px_#f9c4d2,0_8px_0_0_#b18597,0_16px_0_0_#ffe3e2]',
-        'dark:hover:shadow-[0_8px_0_-2px_#f9c4d2,0_8px_0_0_#b18597,0_16px_10px_-5px_rgba(0,0,0,0.3)]',
-        'active:translate-y-3 active:bg-[#ffe9e9] active:shadow-[0_0px_0_-2px_#f9c4d2,0_0px_0_0_#b18597,0_0px_0_0_#ffe3e2]',
-        'dark:active:shadow-[0_0px_0_-2px_#f9c4d2,0_0px_0_0_#b18597,0_0px_0_0_rgba(0,0,0,0)]',
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
+const PopButton = React.forwardRef<HTMLElement, PopButtonProps>(
+  ({ children, href, target, rel, download, variant = 'default', className, ...props }, ref) => {
+    const isIcon = variant === 'icon'
+
+    const buttonClasses = cn(
+      // Base layout & typography
+      'group relative inline-flex cursor-pointer items-center justify-center select-none',
+      'font-secondary text-xs font-bold tracking-wider uppercase italic md:text-sm',
+      'rounded-2xl border',
+      // Ultra-smooth mechanical keycap press animation
+      'transition-all duration-200 ease-[cubic-bezier(0.25,1,0.5,1)]',
+      // Sizing
+      isIcon ? 'h-14 w-14 min-w-[56px] p-0 md:h-15 md:w-15 md:min-w-[60px]' : 'h-14 px-6 md:h-15 md:px-8',
+      // Light Mode (matching portfolio's clean light slate/white theme with green accents)
+      'text-neutral-0 border-[#cbd5e1] bg-gradient-to-b from-[#ffffff] to-[#e4e8ec]',
+      'shadow-[inset_0_1px_0_rgba(255,255,255,1),0_7px_0_0_#b0b8c4,0_10px_18px_rgba(0,0,0,0.08)]',
+      'hover:translate-y-[5px] hover:shadow-[inset_0_1px_0_rgba(255,255,255,1),0_2px_0_0_#b0b8c4,0_4px_8px_rgba(0,0,0,0.05)]',
+      'active:translate-y-[7px] active:shadow-[inset_0_1px_0_rgba(255,255,255,1),0_0px_0_0_#b0b8c4,0_0px_0px_rgba(0,0,0,0)]',
+      // Dark Mode (rich charcoal slate with high-contrast visible 3D bottom shadow and top rim highlight)
+      'dark:border-[#3c3f4e] dark:bg-gradient-to-b dark:from-[#2e2f3a] dark:to-[#21222b] dark:text-white',
+      'dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_7px_0_0_#0f1015,0_12px_24px_rgba(0,0,0,0.75)]',
+      'dark:hover:translate-y-[5px] dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_2px_0_0_#0f1015,0_6px_12px_rgba(0,0,0,0.4)]',
+      'dark:active:translate-y-[7px] dark:active:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0px_0_0_#0f1015,0_0px_0px_rgba(0,0,0,0)]',
+      className
+    )
+
+    if (href) {
+      return (
+        <Link
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          href={href}
+          target={target}
+          rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+          download={download}
+          className={buttonClasses}
+        >
+          {children}
+        </Link>
+      )
+    }
+
+    return (
+      <button ref={ref as React.Ref<HTMLButtonElement>} className={buttonClasses} {...props}>
+        {children}
+      </button>
+    )
+  }
+)
+
+PopButton.displayName = 'PopButton'
 
 export default PopButton

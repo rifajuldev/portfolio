@@ -15,6 +15,7 @@ export interface ITechnology {
   _id?: string
   tech_name: string
   tech_img_url: string
+  tech_img_white_url?: string
   tech_official_url: string
   show_in_hero: boolean
   skill_position: string

@@ -11,7 +11,6 @@ import {
   projects as staticProjects,
   services as staticServices,
   mySkills as staticSkills,
-  statistics as staticStatistics,
   technologies as staticTechnologies,
 } from '@/constants'
 import {
@@ -25,7 +24,6 @@ import {
   IMySkill,
   IProject,
   IService,
-  IStatistics,
   ITechnology,
 } from '@/types'
 import { createContext, FC, ReactNode, useContext } from 'react'
@@ -43,7 +41,6 @@ interface AppContextProps {
   services: IService[]
   cooperationTitle: ICooperationTitle
   cooperationAvatar: string
-  statistics: IStatistics[]
 }
 
 const AppContext = createContext<AppContextProps>({
@@ -59,7 +56,6 @@ const AppContext = createContext<AppContextProps>({
   services: staticServices as IService[],
   cooperationTitle: staticCooperationTitle as ICooperationTitle,
   cooperationAvatar: staticCooperationAvatarUrl,
-  statistics: staticStatistics as IStatistics[],
 })
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -78,7 +74,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         services: staticServices as IService[],
         cooperationTitle: staticCooperationTitle as ICooperationTitle,
         cooperationAvatar: staticCooperationAvatarUrl,
-        statistics: staticStatistics as IStatistics[],
       }}
     >
       {children}
