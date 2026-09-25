@@ -59,12 +59,12 @@ const MySkillsSlide = ({ technologies: propTechnologies, isLoading = false }: My
                     <Link
                       href={tech_official_url}
                       target="_blank"
-                      className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:bg-[#242424]"
+                      className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center overflow-hidden rounded-lg border bg-[#f8f8f8] p-2.5 text-center align-middle leading-17.5 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:bg-[#242424]"
                     >
                       <Image
                         src={tech_img_url}
                         alt={tech_name}
-                        className={`h-auto w-auto ${tech_img_white_url ? 'dark:hidden' : ''}`}
+                        className={`h-auto max-h-11 w-auto max-w-11 object-contain sm:max-h-12 sm:max-w-12 ${tech_img_white_url ? 'dark:hidden' : ''}`}
                         width={70}
                         height={70}
                       />
@@ -72,7 +72,7 @@ const MySkillsSlide = ({ technologies: propTechnologies, isLoading = false }: My
                         <Image
                           src={tech_img_white_url}
                           alt={tech_name}
-                          className="hidden h-auto w-auto dark:block"
+                          className="hidden h-auto max-h-11 w-auto max-w-11 object-contain sm:max-h-12 sm:max-w-12 dark:block"
                           width={70}
                           height={70}
                         />
@@ -107,12 +107,12 @@ const MySkillsSlide = ({ technologies: propTechnologies, isLoading = false }: My
                     <Link
                       href={tech_official_url}
                       target="_blank"
-                      className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-17.5 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:bg-[#242424]"
+                      className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-17.5 w-17.5 items-center justify-center overflow-hidden rounded-lg border bg-[#f8f8f8] p-2.5 text-center align-middle leading-17.5 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md sm:h-20 sm:w-20 sm:leading-20 dark:bg-neutral-800 dark:hover:bg-[#242424]"
                     >
                       <Image
                         src={tech_img_url}
                         alt={tech_name}
-                        className={`h-auto w-auto ${tech_img_white_url ? 'dark:hidden' : ''}`}
+                        className={`h-auto max-h-11 w-auto max-w-11 object-contain sm:max-h-12 sm:max-w-12 ${tech_img_white_url ? 'dark:hidden' : ''}`}
                         width={70}
                         height={70}
                       />
@@ -120,7 +120,7 @@ const MySkillsSlide = ({ technologies: propTechnologies, isLoading = false }: My
                         <Image
                           src={tech_img_white_url}
                           alt={tech_name}
-                          className="hidden h-auto w-auto dark:block"
+                          className="hidden h-auto max-h-11 w-auto max-w-11 object-contain sm:max-h-12 sm:max-w-12 dark:block"
                           width={70}
                           height={70}
                         />

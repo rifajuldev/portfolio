@@ -49,13 +49,13 @@ const HeroCarouselScroll = ({ technologies = heroTechnologies, isLoading = false
                     <QuickTooltip content={tech_name} side="top">
                       <Link
                         href={tech_official_url}
-                        className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-15 w-15 items-center justify-center rounded-lg border bg-[#f8f8f8] text-center align-middle leading-15 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md dark:bg-neutral-800 dark:hover:bg-[#242424]"
+                        className="border-border-1 hover:border-primary-2 dark:hover:border-primary-2 inline-flex h-15 w-15 items-center justify-center overflow-hidden rounded-lg border bg-[#f8f8f8] p-2 text-center align-middle leading-15 transition-all duration-300 ease-in-out hover:bg-white hover:shadow-md dark:bg-neutral-800 dark:hover:bg-[#242424]"
                         target="_blank"
                       >
                         <Image
                           src={tech_img_url}
                           alt={tech_name}
-                          className={`h-auto w-auto ${tech_img_white_url ? 'dark:hidden' : ''}`}
+                          className={`h-auto max-h-9 w-auto max-w-9 object-contain ${tech_img_white_url ? 'dark:hidden' : ''}`}
                           width={60}
                           height={60}
                         />
@@ -63,7 +63,7 @@ const HeroCarouselScroll = ({ technologies = heroTechnologies, isLoading = false
                           <Image
                             src={tech_img_white_url}
                             alt={tech_name}
-                            className="hidden h-auto w-auto dark:block"
+                            className="hidden h-auto max-h-9 w-auto max-w-9 object-contain dark:block"
                             width={60}
                             height={60}
                           />
