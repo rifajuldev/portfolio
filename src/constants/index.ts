@@ -123,7 +123,7 @@ export const projects = [
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'GSAP', 'Lenis'],
     project_img_url: '/projects/nrmlss.webp',
     live_link: 'https://nrmlss-fashion.vercel.app',
-    github_link: 'https://github.com/rifajuldev',
+    github_link: 'https://github.com/rifajuldev/nrmlss',
   },
 ]
 
@@ -146,7 +146,7 @@ export const hero = {
   desc: 'With 2+ years of experience and completed over 30+ projects in cutting-edge technologies such as NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB and MySql... I deliver web & app solutions that are innovative, reliable, robust and production-ready.',
   desc_highlighted_text: 'NodeJS, ExpressJs, NestJs, React, NextJs, React Native, Expo, MongoDB, MySql',
   hero_img_url: '/hero/hero-self-portrait.png',
-  hero_pdf_url: 'https://utfs.io/f/NA8LFvDghE1xMk9oEFicB9Osg0Q7JyWhPAjtnxfrdZo8GvSq',
+  hero_pdf_url: 'https://drive.google.com/file/d/12mjmV7GdJZ7Xocyr26GZTN2fx2145g_b/view?usp=sharing',
 }
 
 export const technologies = [
