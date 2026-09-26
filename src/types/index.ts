@@ -33,6 +33,12 @@ export interface IProject {
   github_link: string
 }
 
+export type BlogContentBlock =
+  | { type: 'heading'; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'code'; language: string; filename?: string; code: string }
+
 export interface IBlog {
   _id: string
   tag: string
@@ -43,6 +49,7 @@ export interface IBlog {
   desc: string
   link?: string
   content?: string
+  contentBlocks?: BlogContentBlock[]
   author?: {
     name: string
     role: string

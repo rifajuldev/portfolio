@@ -99,7 +99,7 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
               <Image src={blog.author.avatar} alt={blog.author.name} fill className="object-cover" />
             </div>
             <div>
-              <h4 className="text-neutral-0 text-sm font-semibold">{blog.author.name}</h4>
+              <h4 className="text-neutral-0 mb-0 text-sm font-semibold">{blog.author.name}</h4>
               <p className="text-xs text-neutral-400">{blog.author.role}</p>
             </div>
           </div>
