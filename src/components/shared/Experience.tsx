@@ -1,5 +1,6 @@
 'use client'
 import { experienceTitle, experiences } from '@/constants'
+import Image from 'next/image'
 import { useState } from 'react'
 import SectionAnimatedBorder from '../ui/SectionAnimatedBorder'
 import SectionHeading from '../ui/SectionHeading'
@@ -39,15 +40,30 @@ const Experience = () => {
                   >
                     <div className="flex items-center gap-3">
                       {company.company_logo_url && (
-                        <img
+                        <Image
                           src={company.company_logo_url}
                           alt={company.company_name}
-                          className="h-10 w-10 object-contain"
+                          className="h-10 w-16 object-contain"
+                          width={100}
+                          height={100}
                         />
                       )}
                       <div className="flex flex-col">
-                        <h5 className="mb-1 text-left text-[18px] md:text-[24px]">{company.company_name}</h5>
-                        <span className="text-neutral-300">
+                        {company.company_url ? (
+                          <a
+                            href={company.company_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="hover:text-secondary-2 mb-0.5 text-left text-[18px] underline"
+                          >
+                            {company.company_name}
+                          </a>
+                        ) : (
+                          <h5 className="mb-1 text-left text-[18px] md:text-[24px]">{company.company_name}</h5>
+                        )}
+                        <span className="text-neutral-0 text-left text-sm">{company.role}</span>
+                        <span className="text-left text-sm text-neutral-300">
                           {new Date(company.job_start_date).toLocaleDateString('en-US', {
                             month: 'short',
                             year: 'numeric',

@@ -85,6 +85,7 @@ export interface IExperience {
   _id: string
   company_name: string
   company_logo_url: string
+  company_url?: string
   role: string
   job_start_date: string | Date
   job_end_date?: string | Date
