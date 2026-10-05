@@ -1,18 +1,23 @@
 'use client'
 import { QuickTooltip } from '@/components/ui/tooltip'
 import { triggerWaterDropWave } from '@/lib/waterRipple'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { RiContrast2Line, RiSunFill } from 'react-icons/ri'
 
 const ThemeToggle = () => {
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const [mode, setMode] = useState<'dark' | 'light'>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
-      if (savedTheme) return savedTheme
+  const [mode, setMode] = useState<'dark' | 'light'>('dark')
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
+    if (savedTheme) {
+      setMode(savedTheme)
+    } else if (document.documentElement.classList.contains('dark')) {
+      setMode('dark')
+    } else {
+      setMode('light')
     }
-    return 'dark'
-  })
+  }, [])
 
   const toggleMode = (e: React.MouseEvent<HTMLButtonElement>) => {
     const isDarkToLight = mode === 'dark'
